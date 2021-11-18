@@ -1,0 +1,11 @@
+@mixin list-reset {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+//Reset links <a>
+@mixin link-reset {
+    text-decoration: none;
+    color: #000;
+}

@@ -1,0 +1,64 @@
+@use "base";
+@use "mixin";
+
+.navbar-container {
+    display: flex;
+    margin: 20px 30px;
+
+    &__list {
+        @include mixin.list-reset;
+
+        &--hidden {
+            display: none;
+        }
+    }
+
+    &__icon {
+        width: 20px;
+        height: 20px;
+        &:hover {
+            fill: base.$primary;
+        }
+    }
+
+    &__icon-list {
+        @include mixin.list-reset;
+        display: flex;
+        gap: 15px;
+        margin-left: auto;
+    }
+
+    .btn {
+        background: none;
+        border-style: none;
+        &--hidden {
+            display: block;
+        }
+    }
+}
+
+//Tablet
+@media screen and (min-width: base.$medium-width) {
+    .navbar-container {
+        &__list {
+            display: flex;
+            gap: 100px;
+
+            &--hidden {
+                display: block;
+            }
+
+            &--anchor-reset {
+                @include mixin.link-reset;
+                &:hover {
+                    color: base.$primary;
+                    font-weight: 800;
+                }
+            }
+        }
+
+        .mobile-menu-container {
+            display: none;
+        }
+    }
+}

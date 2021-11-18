@@ -1,1 +1,10 @@
-@use "variables";
+@use "base";
+@use "layout";
+@use "navbar";
+@use "mixin";
+
+html {
+    font-size: base.$default_fz;
+    font-family: base.$text_ff;
+    background-color: base.$bg-primary;
+}
