@@ -4,7 +4,7 @@
     "uglify-js": "^3.14.3"
   },
   "scripts": {
-    "sass": "npx sass resources/scss/styles.scss public/css/styles.css",
+    "sass": "npx sass resources/scss/style.scss public/css/style.css",
     "sass:watch": "sass --watch ./resources/scss/style.scss ./public/css/style.css",
     "js:copy": "cp resources/js/*.js public/js",
     "js:minify": "npx uglifyjs resources/js/*.js --compress --mangle > public/js/app.min.js",
