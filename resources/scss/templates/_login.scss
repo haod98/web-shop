@@ -1,0 +1,58 @@
+@use "../mixin";
+@use "../base";
+
+.user-login-container {
+    @include mixin.flex($justify: center);
+    margin: 20px 25%;
+    &__btn {
+        @include mixin.flex($justify: center, $grow: 1);
+        text-transform: uppercase;
+        padding-bottom: 5px;
+        letter-spacing: 2px;
+        max-width: 300px;
+        &--active {
+            border-bottom: solid 2px #000;
+            font-weight: bold;
+        }
+    }
+}
+.form-login-container {
+    @include mixin.flex($justify: center);
+
+    .form-login {
+        @include mixin.flex(column);
+        &__label {
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        &__input,
+        &__select {
+            border-style: none;
+            padding: 10px 10px;
+            background: #fff;
+            margin-bottom: 15px;
+            &:focus {
+                outline: solid 1px #000;
+            }
+        }
+
+        &__submit {
+            background: #000;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            padding: 10px 0;
+        }
+    }
+}
+
+@media screen and (min-width: base.$medium-width) {
+    .form-login {
+        &__input,
+        &__submit {
+            width: 500px;
+        }
+    }
+}

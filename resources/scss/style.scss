@@ -1,10 +1,24 @@
 @use "base";
-@use "layout";
-@use "navbar";
 @use "mixin";
+@use "layout";
+@use "partials/navbar" as navbar;
+@use "templates/login";
 
 html {
     font-size: base.$default_fz;
     font-family: base.$text_ff;
     background-color: base.$bg-primary;
+}
+
+h1,
+h2 {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: base.$heading_ff;
+    letter-spacing: 0.3rem;
+    margin: 0;
+}
+
+.hide {
+    display: none;
 }

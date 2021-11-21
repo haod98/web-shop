@@ -1,3 +1,5 @@
+@use "mixin";
+
 $heading_ff: "ambroise-std", serif;
 $text_ff: "montserrat", sans-serif;
 $default_fz: 16px;
@@ -7,3 +9,15 @@ $primary: #d34040;
 // Media Query (Display widths)
 $medium-width: 768px;
 $large-width: 1200px;
+
+.list-reset {
+    @include mixin.list-reset;
+}
+
+.link-reset {
+    @include mixin.link-reset;
+}
+
+.btn {
+    @include mixin.btn-reset;
+}
