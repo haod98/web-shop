@@ -7,9 +7,6 @@
 
 use App\Controllers\AuthController;
 use App\Controllers\HomeController;
-use App\Controllers\RoomController;
-use App\Controllers\RoomFeatureController;
-use App\Controllers\BookingController;
 
 /**
  * Die Dateien im /routes Ordner beinhalten ein Mapping von einer URL auf eine eindeutige Controller & Action
