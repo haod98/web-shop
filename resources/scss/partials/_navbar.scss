@@ -23,8 +23,7 @@
 
     &__icon-list {
         @include mixin.list-reset;
-        display: flex;
-        gap: 15px;
+        @include mixin.flex($align: center, $gap: 15px);
         margin-left: auto;
     }
 }
@@ -33,8 +32,7 @@
 @media screen and (min-width: base.$medium-width) {
     .navbar-container {
         &__list {
-            display: flex;
-            gap: 100px;
+            @include mixin.flex($align: center, $gap: 100px);
 
             &--hidden {
                 display: block;

@@ -24,16 +24,16 @@ abstract class AbstractUser extends AbstractModel
     const LOGGED_IN_USER_ID = 'logged_in_user_id';
 
     /**
-     * @param string $emailOrUsername
+     * @param string $email
      *
      * @return object|null
      */
-    public static function findByEmailOrUsername(string $emailOrUsername): ?object
+    public static function findByEmail(string $email): ?object
     {
         /**
          * Whitespace entfernen.
          */
-        $emailOrUsername = trim($emailOrUsername);
+        $email = trim($email);
 
         /**
          * Datenbankverbindung herstellen.
@@ -52,9 +52,8 @@ abstract class AbstractUser extends AbstractModel
          * nur dann die Möglichkeit, dass wir mehr als ein Ergebnis erhalten, wenn jemand eine Fremde E-Mail-Adresse als
          * Username verwendet hat.
          */
-        $result = $database->query("SELECT * FROM $tablename WHERE email = ? OR username = ? LIMIT 1", [
-            's:email' => $emailOrUsername,
-            's:username' => $emailOrUsername
+        $result = $database->query("SELECT * FROM $tablename WHERE email = ? LIMIT 1", [
+            's:email' => $email,
         ]);
 
         /**
@@ -223,4 +222,19 @@ abstract class AbstractUser extends AbstractModel
         return null;
     }
 
+    /**
+     * @param string $tableName The name of the table you search 
+     * @return mixed
+     */
+    public static function getSingleUserData(string $tableName): mixed
+    {
+
+        $userId = Session::get(self::LOGGED_IN_USER_ID, null);
+        if ($userId !== null && $tableName !== 'password') {
+            $result = User::find($userId);
+            $table = $result->$tableName;
+            return $table;
+        }
+        return null;
+    }
 }

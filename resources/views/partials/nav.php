@@ -8,7 +8,11 @@
             </button>
         </li>
         <li class="navbar-container__list--hidden">
-            <a class="navbar-container__list--anchor-reset" href="<?php echo BASE_URL; ?>">Home</a>
+            <a class="navbar-container__list--anchor-reset" href="<?php
+
+                                                                    use App\Models\User;
+
+                                                                    echo BASE_URL; ?>">Home</a>
         </li>
         <li class="navbar-container__list--hidden">
             <a class="navbar-container__list--anchor-reset" href="">Women</a>
@@ -18,6 +22,19 @@
         </li>
     </ul>
     <ul class="list-reset navbar-container__icon-list">
+        <?php if (\Core\Middlewares\AuthMiddleware::isAdmin()) : ?>
+            <li>
+                <p class="text-reset greeting">
+                    Welcome back <?php echo User::getSingleUserData('first_name') ?> (Admin)
+                </p>
+            </li>
+        <?php elseif (\Core\Middlewares\AuthMiddleware::isLoggedIn()) : ?>
+            <li>
+                <p class="text-reset greeting">
+                    Welcome back <?php echo User::getSingleUserData('first_name') ?>
+                </p>
+            </li>
+        <?php endif; ?>
         <li>
             <a class="navbar-container__list--anchor-reset" href="<?php echo BASE_URL; ?>/login">
                 <!-- Login icon -->

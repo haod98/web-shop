@@ -21,3 +21,8 @@ $large-width: 1200px;
 .btn {
     @include mixin.btn-reset;
 }
+
+.text-reset {
+    margin: 0;
+    padding: 0;
+}

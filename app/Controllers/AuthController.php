@@ -57,7 +57,7 @@ class AuthController
          * User anhand einer Email-Adresse oder eines Usernames aus der Datenbank laden.
          * Diese Funktionalität kommt aus der erweiterten Klasse AbstractUser.
          */
-        $user = User::findByEmailOrUsername($_POST['username-or-email']);
+        $user = User::findByEmail($_POST['email']);
 
         /**
          * Fehler-Array vorbereiten
@@ -76,7 +76,7 @@ class AuthController
             /**
              * Wenn nein: Fehler!
              */
-            $errors[] = 'Username/E-Mail oder Passwort sind falsch.';
+            $errors[] = 'E-Mail or password wrong.';
         } else {
             /**
              * Wenn ja: weiter.
@@ -101,5 +101,4 @@ class AuthController
     {
         User::logout('/');
     }
-
 }

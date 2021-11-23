@@ -226,6 +226,7 @@ abstract class AbstractModel
              * AbstractModels.
              */
             $calledClass = get_called_class();
+
             $objects[] = new $calledClass(...$result);
         }
 

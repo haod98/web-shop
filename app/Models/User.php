@@ -28,13 +28,15 @@ class User extends AbstractUser
          * Im Prinzip definieren wir alle Spalten aus der Tabelle mit dem richtigen Datentyp.
          */
         public int $id,
-        public string $username,
         public string $email,
+        public string $first_name,
+        public string $last_name,
+        public string $gender,
         protected string $password,
         public string $created_at,
         public string $updated_at,
         public ?string $deleted_at,
-        public bool $is_admin = false
+        public bool $is_admin = false,
     ) {
     }
 
