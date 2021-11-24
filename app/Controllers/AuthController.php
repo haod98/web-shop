@@ -6,6 +6,7 @@ use Core\Helpers\Redirector;
 use Core\Session;
 use Core\View;
 use App\Models\User;
+use Core\Validator;
 
 /**
  * Class AuthController
@@ -92,6 +93,24 @@ class AuthController
          */
         Session::set('errors', $errors);
         Redirector::redirect('/login');
+    }
+
+    public function registerDo()
+    {
+        $validator = new Validator();
+        $validator->letters($_POST['fname'], label: 'First Name', required: true, min: 2);
+        $validator->letters($_POST['lname'], label: 'Last name', required: true, min: 2);
+        $validator->email($_POST['email'], label: 'E-mail', required: true,);
+        $validator->password($_POST['password'], label: 'Password', required: true, min: 8);
+        $validator->unique($_POST['email'], 'E-mail', 'users', 'email');
+        $validator->compare([$_POST['password'], 'Password'], [$_POST['password_repeat'], 'Repeat password']);
+
+        $errors = $validator->getErrors();
+
+        if (!empty($errors)) {
+            Session::set('errors', $errors);
+            Redirector::redirect('/login');
+        }
     }
 
     /**

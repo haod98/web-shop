@@ -8,34 +8,38 @@
     <div class="form-login-container j-loginForm">
         <form action="<?php echo BASE_URL ?>/login/do" class="form-login" method="POST">
             <label class="form-login__label" for="email">E-Mail</label>
-            <input class="form-login__input" type="text" id="email" name="email" placeholder="E-Mail" required autocomplete="off">
+            <input class="form-login__input" type="text" id="email" name="email" placeholder="E-Mail" autocomplete="off">
             <label class="form-login__label" for="password">Password</label>
-            <input class="form-login__input" type="password" id="password" placeholder="Password" name="password" required autocomplete="off">
+            <input class="form-login__input" type="password" id="password" placeholder="Password" name="password" autocomplete="off">
             <button type="submit" class="btn form-login__submit">Login</button>
         </form>
     </div>
 
     <!-- Register -->
+    <!-- Required attribute removed for easier dev -->
     <div class="form-login-container j-registerForm hide">
-        <form action="" class="form-login" method="POST">
+        <form action="<?php echo BASE_URL ?>/register/do" class="form-login" method="POST">
             <label class="form-login__label" for="gender">Title</label>
             <select class="form-login__input" name="gender" id="">
+                <option value="-" selected disabled>Please select the following options</option>
                 <option value="f">Ms.</option>
                 <option value="m">Mr.</option>
-                <option value="none">--</option>
+                <option value="NULL">--</option>
             </select>
-
             <label class="form-login__label" for="fname">First Name</label>
-            <input class="form-login__input" type="text" id="fname" name="fname" placeholder="First name" required>
+            <input class="form-login__input" type="text" id="fname" name="fname" placeholder="First name">
 
             <label class="form-login__label" for="lname">Last name</label>
-            <input class="form-login__input" type="text" id="lname" name="lname" placeholder="Last name" required>
+            <input class="form-login__input" type="text" id="lname" name="lname" placeholder="Last name">
 
             <label class="form-login__label" for="email">E-Mail</label>
-            <input class="form-login__input" type="email" id="email" name="email" placeholder="E-Mail" required>
+            <input class="form-login__input" type="email" id="email" name="email" placeholder="E-Mail">
 
             <label class="form-login__label" for="password">Password</label>
-            <input class="form-login__input" type="password" id="password" name="password" placeholder="Password" required>
+            <input class="form-login__input" type="password" id="password" name="password" placeholder="Password">
+
+            <label class="form-login__label" for="password_repeat">Repeat password</label>
+            <input class="form-login__input" type="password" id="password_repeat" name="password_repeat" placeholder="Repeat password">
 
             <button type="submit" class="btn form-login__submit">Register</button>
         </form>

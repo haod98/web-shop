@@ -29,6 +29,7 @@ return [
     '/login' => [AuthController::class, 'loginForm'],
     '/login/do' => [AuthController::class, 'loginDo'],
     '/logout' => [AuthController::class, 'logout'],
+    '/register/do' => [AuthController::class, 'registerDo']
 
 
     // ...
