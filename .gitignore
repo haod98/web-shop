@@ -3,4 +3,6 @@ node_modules
 
 # Generated through sass and js
 /public/css
-/public/js
+
+/public/js/*
+!/public/js/.gitkeep
