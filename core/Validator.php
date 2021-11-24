@@ -46,29 +46,29 @@ class Validator
      * @var string[]
      */
     private array $errorMessages = [
-        'letters' => '%s darf nur Buchstaben und Leerzeichen beinhalten.',
-        'text' => '%s darf nur Buchstaben und Sonderzeichen beinhalten.',
-        'textnum' => '%s darf nur aus alphanumerischen Zeichen bestehen.',
-        'alphanumeric' => '%s darf nur Buchstaben, Zahlen, Binde- und Unterstriche beinhalten.',
-        'numeric' => '%s muss numerisch sein.',
-        'int' => '%s muss ganzzahlig sein.',
-        'float' => '%s muss eine Fließkommazahl sein.',
-        'equals' => '%s muss ident sein mit %s.',
-        'password' => '%s muss mindestens 8 Zeichen lang sein, Groß- und Kleinbuchstabe und Sonderzeichen enthalten.',
-        'email' => '%s muss eine korrekte E-Mail Adresse sein.',
+        'letters' => '%s only letters and spaces allowed.',
+        'text' => '%s only letters and special characters allowed.',
+        'textnum' => '%s only letters and numbers allowed.',
+        'alphanumeric' => '%s only letters, numbers, hyphen and underlines allowed.',
+        'numeric' => '%s must be numeric.',
+        'int' => '%s must be an integer.',
+        'float' => '%s must be a float.',
+        'equals' => '%s must be identical.',
+        'password' => '%s password must at be least 8 characters long, contain a lower-, uppercase letter and a special character.',
+        'email' => '%s must be a valid e-mail.',
 
 
-        'required' => '%s ist ein Pflichtfeld.',
-        'min' => '%s muss mindestens %s sein.',
-        'min-string' => '%s muss mindestens %s Zeichen haben.',
-        'max' => '%s muss kleiner oder gleich %s sein.',
-        'max-string' => '%s darf maximal %s Zeichen haben.',
-        'compare' => '%s und %s müssen ident sein.',
-        'unique' => '%s darf nur einmal verwendet werden.',
+        'required' => '%s is required.',
+        'min' => '%s must at least %s long.',
+        'min-string' => '%s must at least have %s letters.',
+        'max' => '%s must be smaller or identical %s.',
+        'max-string' => '%s only %s allowed.',
+        'compare' => '%s must be identical to %s.',
+        'unique' => '%s is already in use.',
 
-        'file-error' => 'Es konnten nicht alle Dateien aus %s hochgeladen werden.',
-        'file-type' => '%s darf nur Dateien vom Typ "%s" beinhalten.',
-        'file-size' => '%s darf nur Dateien bis zu %d MB beinhalten.'
+        'file-error' => 'Could not upload the files from %s.',
+        'file-type' => '%s only "%s" file types allowed.',
+        'file-size' => '%s files only up to %d MB allowed.'
     ];
 
     /**
@@ -292,7 +292,7 @@ class Validator
          */
         $defaults = [
             0 => 'text',
-            'label' => 'Feld',
+            'label' => 'Label',
             'required' => false,
             'min' => null,
             'max' => null

@@ -95,7 +95,7 @@ class AuthController
         Redirector::redirect('/login');
     }
 
-    public function registerDo()
+    public function signUpDo()
     {
         $validator = new Validator();
         $validator->letters($_POST['fname'], label: 'First Name', required: true, min: 2);

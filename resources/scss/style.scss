@@ -3,6 +3,7 @@
 @use "layout";
 @use "partials/navbar" as navbar;
 @use "templates/login";
+@use "partials/infoMessage" as infoMessage;
 
 html {
     font-size: base.$default_fz;

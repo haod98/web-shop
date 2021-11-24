@@ -1,0 +1,19 @@
+@use "../base";
+.error-msg-container,
+.success-msg-container {
+    max-width: 500px;
+    margin-bottom: 10px;
+    padding: 0 20px;
+    &__text {
+    }
+}
+
+.error-msg-container {
+    background: lighten(base.$primary, 20%);
+    border: solid base.$primary 1px;
+}
+
+.success-msg-container {
+    background: lighten(base.$success, 20%);
+    border: solid base.$success 1px;
+}
