@@ -8,30 +8,26 @@
             </button>
         </li>
         <li class="navbar-container__list--hidden">
-            <a class="navbar-container__list--anchor-reset" href="<?php
-
-                                                                    use App\Models\User;
-
-                                                                    echo BASE_URL; ?>">Home</a>
+            <a class="navbar-container__list--anchor-reset" href="<?php echo BASE_URL; ?>">Home</a>
         </li>
         <li class="navbar-container__list--hidden">
-            <a class="navbar-container__list--anchor-reset" href="">Women</a>
+            <a class="navbar-container__list--anchor-reset" href="<?php echo BASE_URL; ?>/women">Women</a>
         </li>
         <li class="navbar-container__list--hidden">
-            <a class="navbar-container__list--anchor-reset" href="">Men</a>
+            <a class="navbar-container__list--anchor-reset" href="<?php echo BASE_URL; ?>/men">Men</a>
         </li>
     </ul>
     <ul class="list-reset navbar-container__icon-list">
         <?php if (\Core\Middlewares\AuthMiddleware::isAdmin()) : ?>
             <li>
                 <p class="text-reset greeting">
-                    Welcome back <?php echo User::getSingleUserData('first_name') ?> (Admin)
+                    Welcome back <?php echo \App\Models\User::getSingleUserData('first_name') ?> (Admin)
                 </p>
             </li>
         <?php elseif (\Core\Middlewares\AuthMiddleware::isLoggedIn()) : ?>
             <li>
                 <p class="text-reset greeting">
-                    Welcome back <?php echo User::getSingleUserData('first_name') ?>
+                    Welcome back <?php echo \App\Models\User::getSingleUserData('first_name') ?>
                 </p>
             </li>
         <?php endif; ?>

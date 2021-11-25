@@ -22,15 +22,15 @@
             <label class="form-login__label" for="gender">Title</label>
             <select class="form-login__input" name="gender" id="">
                 <option value="-" selected disabled>Please select the following options</option>
-                <option value="f">Ms.</option>
-                <option value="m">Mr.</option>
-                <option value="NULL">--</option>
+                <option value="male">Mr.</option>
+                <option value="female">Ms.</option>
+                <option value="null">--</option>
             </select>
             <label class="form-login__label" for="fname">First Name</label>
-            <input class="form-login__input" type="text" id="fname" name="fname" placeholder="First name">
+            <input class="form-login__input" type="text" id="fname" name="first_name" placeholder="First name">
 
             <label class="form-login__label" for="lname">Last name</label>
-            <input class="form-login__input" type="text" id="lname" name="lname" placeholder="Last name">
+            <input class="form-login__input" type="text" id="lname" name="last_name" placeholder="Last name">
 
             <label class="form-login__label" for="email">E-Mail</label>
             <input class="form-login__input" type="email" id="email" name="email" placeholder="E-Mail">

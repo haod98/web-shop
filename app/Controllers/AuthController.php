@@ -98,8 +98,8 @@ class AuthController
     public function signUpDo()
     {
         $validator = new Validator();
-        $validator->letters($_POST['fname'], label: 'First Name', required: true, min: 2);
-        $validator->letters($_POST['lname'], label: 'Last name', required: true, min: 2);
+        $validator->letters($_POST['first_name'], label: 'First Name', required: true, min: 2);
+        $validator->letters($_POST['last_name'], label: 'Last name', required: true, min: 2);
         $validator->email($_POST['email'], label: 'E-mail', required: true,);
         $validator->password($_POST['password'], label: 'Password', required: true, min: 8);
         $validator->unique($_POST['email'], 'E-mail', 'users', 'email');
@@ -109,6 +109,32 @@ class AuthController
 
         if (!empty($errors)) {
             Session::set('errors', $errors);
+            Redirector::redirect('/login');
+        }
+
+        $user = new User();
+        $user->fill($_POST);
+        $user->setPassword($_POST['password']);
+
+        if ($user->save()) {
+            Session::set('success', ['Thank you for signing']);
+            $gender = User::getGender($user->email);
+            /**
+             * Redirecting depending on their gender
+             */
+            switch ($gender) {
+                case 'male':
+                    Redirector::redirect('/men');
+                    break;
+                case 'female':
+                    Redirector::redirect('/women');
+                    break;
+                case 'null';
+                    Redirector::redirect('/');
+                    break;
+            }
+        } else {
+            Session::set('errors', ['There was an unexpted error']);
             Redirector::redirect('/login');
         }
     }
