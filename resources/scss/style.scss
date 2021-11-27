@@ -1,9 +1,22 @@
+//////////////////////////////////////////////
+////////////////////Base//////////////////////
+//////////////////////////////////////////////
 @use "base";
 @use "mixin";
 @use "layout";
+
+//////////////////////////////////////////////
+//////////////////Partials////////////////////
+//////////////////////////////////////////////
 @use "partials/navbar" as navbar;
-@use "templates/login";
 @use "partials/infoMessage" as infoMessage;
+@use "partials/newsletter" as newsletter;
+
+///////////////////////////////////////////////
+//////////////////Templates////////////////////
+//////////////////////////////////////////////
+@use "templates/index";
+@use "templates/login";
 
 html {
     font-size: base.$default_fz;
@@ -20,10 +33,37 @@ h2 {
     margin: 0;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.view-loader-container {
+    margin: 0 20px;
+}
+
 .hide {
     display: none;
 }
 
 .greeting {
     font-size: 0.8rem;
+}
+
+.btn--cta-btn {
+    font-weight: bold;
+    text-transform: uppercase;
+    background: #fff;
+    color: base.$primary;
+    padding: 20px 15px;
+    letter-spacing: 2px;
+}
+
+.btn--dark {
+    font-weight: bold;
+    text-transform: uppercase;
+    background: #000;
+    color: #fff;
+    padding: 20px 15px;
+    letter-spacing: 2px;
 }

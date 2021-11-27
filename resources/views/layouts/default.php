@@ -20,7 +20,7 @@
     require_once __DIR__ . '/../partials/flashMessagesAndErrors.php'; ?>
 
 
-    <div class="container">
+    <div class="view-loader-container">
         <?php
         /**
          * Das Layout erwartet eine Variable $templatePath, damit das Layout selbst das Template laden kann.

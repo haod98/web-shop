@@ -1,0 +1,62 @@
+@use "../base";
+@use "../mixin";
+
+.card-container {
+    @include mixin.flex($direction: column);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    &-text {
+        @include mixin.flex($direction: column, $order: 2, $align: center);
+        text-align: center;
+        margin-top: 10px;
+        &__heading {
+            line-height: 30px;
+            color: base.$primary;
+        }
+    }
+    .card-img-container {
+        @include mixin.flex($direction: column, $order: 1);
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+}
+
+@media (min-width: base.$medium-width) {
+    .card-container {
+        @include mixin.flex($direction: row);
+        &-text {
+            @include mixin.flex($direction: column, $order: 2, $justify: center, $align: left);
+            flex-basis: 50%;
+            &--left {
+                @include mixin.flex($direction: column, $order: 1, $justify: center, $align: left);
+            }
+        }
+        .card-img-container {
+            @include mixin.flex($direction: row, $order: 1);
+            flex-basis: 50%;
+            &__img {
+                max-width: 100%;
+                &--right {
+                    @include mixin.flex($direction: column, $order: 2, $justify: center, $align: left);
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: base.$large-width) {
+    .card-container {
+        &-text {
+            flex-basis: 70%;
+            &__heading {
+                font-size: 3rem;
+            }
+        }
+    }
+    .card-img-container {
+        flex-basis: 30%;
+        &__img {
+            width: 100vw;
+        }
+    }
+}

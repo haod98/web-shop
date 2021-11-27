@@ -1,0 +1,37 @@
+@use "../base";
+@use "../mixin";
+.newsletter-container {
+    margin: 0 -20px;
+    padding: 30px 20px;
+    background: darken(base.$bg-primary, 10%);
+    &__heading {
+        margin: 0;
+        font-family: base.$heading_ff;
+        text-transform: uppercase;
+        font-size: 1.5rem;
+    }
+
+    .newsletter-form {
+        @include mixin.flex($direction: column);
+        &__input {
+            padding: 10px 10px;
+            border: none;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+    }
+}
+
+@media (min-width: base.$medium-width) {
+    .newsletter-container {
+        @include mixin.flex($gap: 30px);
+        &__text {
+            @include mixin.flex($direction: column, $order: 1);
+            flex-basis: 60%;
+        }
+        .newsletter-form-container {
+            @include mixin.flex($direction: column, $order: 2);
+            flex-basis: 40%;
+        }
+    }
+}
