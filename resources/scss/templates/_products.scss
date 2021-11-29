@@ -1,0 +1,43 @@
+@use "../base";
+@use "../mixin";
+
+.collection-overview-container {
+    background: #fff;
+    margin: 0 -20px;
+    padding: 20px 20px;
+    text-align: center;
+    &__heading {
+        color: base.$primary;
+        font-weight: bold;
+        font-size: 2rem;
+        line-height: 30px;
+    }
+    &__text {
+        margin: 15px 0 15px;
+    }
+    .add-product-container {
+        @include mixin.flex($justify: center);
+        &__btn {
+            @include mixin.flex($justify: center, $align: center, $gap: 8px);
+        }
+        .plus-icon {
+            width: 17px;
+            height: 17px;
+            fill: #fff;
+        }
+    }
+}
+
+@media screen and (min-width: base.$medium-width) {
+    .collection-overview-container {
+        padding: 30px 150px;
+        &__heading {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            line-height: 40px;
+        }
+        &__text {
+            margin: 5px 0 20px;
+        }
+    }
+}

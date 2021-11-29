@@ -1,6 +1,7 @@
 //////////////////////////////////////////////
 ////////////////////Base//////////////////////
 //////////////////////////////////////////////
+
 @use "base";
 @use "mixin";
 @use "layout";
@@ -8,6 +9,7 @@
 //////////////////////////////////////////////
 //////////////////Partials////////////////////
 //////////////////////////////////////////////
+
 @use "partials/navbar" as navbar;
 @use "partials/infoMessage" as infoMessage;
 @use "partials/newsletter" as newsletter;
@@ -15,8 +17,10 @@
 ///////////////////////////////////////////////
 //////////////////Templates////////////////////
 //////////////////////////////////////////////
+
 @use "templates/index";
 @use "templates/login";
+@use "templates/products";
 
 html {
     font-size: base.$default_fz;
@@ -66,4 +70,11 @@ body {
     color: #fff;
     padding: 20px 15px;
     letter-spacing: 2px;
+}
+
+.btn--add {
+    font-weight: bold;
+    background: base.$success;
+    color: #fff;
+    padding: 10px 10px;
 }

@@ -38,6 +38,7 @@ class User extends AbstractUser
         public string $updated_at = '',
         public ?string $deleted_at = '',
         public bool $is_admin = false,
+        public bool $newsletter = false,
     ) {
     }
 
