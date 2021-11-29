@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 28, 2021 at 02:05 PM
+-- Generation Time: Nov 29, 2021 at 09:43 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -41,6 +41,22 @@ CREATE TABLE `addresses` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `address_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
@@ -58,6 +74,34 @@ CREATE TABLE `products` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `products_size_mm`
+--
+
+CREATE TABLE `products_size_mm` (
+  `id` int(11) NOT NULL,
+  `prodcuts_id` int(11) NOT NULL,
+  `size_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quantities`
+--
+
+CREATE TABLE `quantities` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `size_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sizes`
 --
 
@@ -65,7 +109,6 @@ CREATE TABLE `sizes` (
   `id` int(11) NOT NULL,
   `size` varchar(255) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -85,6 +128,7 @@ CREATE TABLE `users` (
   `gender` varchar(10) DEFAULT NULL,
   `is_admin` tinyint(1) NOT NULL DEFAULT 0,
   `password` varchar(255) NOT NULL,
+  `newsletter` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -94,8 +138,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `gender`, `is_admin`, `password`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'max.mustermann@email.com', 'Max', 'Mustermann', 'm', 1, '$2a$12$Iok3WcgII9wqge7tzKDnbeRBQdbunJOooGflz0VixsFf0d/6lmyL2', '2021-11-25 11:32:36', '2021-11-25 12:24:26', NULL);
+INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `gender`, `is_admin`, `password`, `newsletter`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'max.mustermann@email.com', 'Max', 'Mustermann', 'm', 1, '$2a$12$Iok3WcgII9wqge7tzKDnbeRBQdbunJOooGflz0VixsFf0d/6lmyL2', 0, '2021-11-25 11:32:36', '2021-11-29 19:44:02', NULL);
 
 --
 -- Indexes for dumped tables
@@ -109,10 +153,34 @@ ALTER TABLE `addresses`
   ADD KEY `user_id` (`user_id`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `address_id` (`address_id`),
+  ADD KEY `product_id` (`product_id`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `products_size_mm`
+--
+ALTER TABLE `products_size_mm`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `prodcuts_id` (`prodcuts_id`),
+  ADD KEY `size_id` (`size_id`);
+
+--
+-- Indexes for table `quantities`
+--
+ALTER TABLE `quantities`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `size id` (`size_id`);
 
 --
 -- Indexes for table `sizes`
@@ -138,9 +206,27 @@ ALTER TABLE `addresses`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `products_size_mm`
+--
+ALTER TABLE `products_size_mm`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `quantities`
+--
+ALTER TABLE `quantities`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -166,10 +252,25 @@ ALTER TABLE `addresses`
   ADD CONSTRAINT `addresses_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `sizes`
+-- Constraints for table `orders`
 --
-ALTER TABLE `sizes`
-  ADD CONSTRAINT `sizes_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`address_id`) REFERENCES `addresses` (`id`),
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+
+--
+-- Constraints for table `products_size_mm`
+--
+ALTER TABLE `products_size_mm`
+  ADD CONSTRAINT `products_size_mm_ibfk_1` FOREIGN KEY (`prodcuts_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `products_size_mm_ibfk_2` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`);
+
+--
+-- Constraints for table `quantities`
+--
+ALTER TABLE `quantities`
+  ADD CONSTRAINT `quantities_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `quantities_ibfk_2` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
