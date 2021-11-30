@@ -68,6 +68,7 @@ trait SoftDelete
          */
         $tablename = self::getTablenameFromClassname();
 
+
         /**
          * Query ausführen.
          *
@@ -90,5 +91,4 @@ trait SoftDelete
          */
         return self::handleResult($result);
     }
-
 }

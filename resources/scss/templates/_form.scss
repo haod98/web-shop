@@ -3,7 +3,7 @@
 
 .user-login-container {
     @include mixin.flex($justify: center);
-    margin: 20px 25%;
+    margin: 20px 25% 0;
     &__btn {
         @include mixin.flex($justify: center, $grow: 1);
         text-transform: uppercase;
@@ -16,10 +16,11 @@
         }
     }
 }
-.form-login-container {
+.form-container {
     @include mixin.flex($justify: center);
+    margin-top: 20px;
 
-    .form-login {
+    .form {
         @include mixin.flex(column);
         &__label {
             text-transform: uppercase;
@@ -27,11 +28,16 @@
         }
 
         &__input,
-        &__select {
+        &__select,
+        &__textarea {
             border-style: none;
             padding: 10px 10px;
             background: #fff;
             margin-bottom: 15px;
+            -ms-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+            -webkit-box-sizing: content-box;
             &:focus {
                 outline: solid 1px #000;
             }
@@ -49,7 +55,7 @@
 }
 
 @media screen and (min-width: base.$medium-width) {
-    .form-login {
+    .form {
         &__input,
         &__submit {
             width: 500px;

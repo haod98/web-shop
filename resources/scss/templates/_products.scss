@@ -15,16 +15,11 @@
     &__text {
         margin: 15px 0 15px;
     }
-    .add-product-container {
-        @include mixin.flex($justify: center);
-        &__btn {
-            @include mixin.flex($justify: center, $align: center, $gap: 8px);
-        }
-        .plus-icon {
-            width: 17px;
-            height: 17px;
-            fill: #fff;
-        }
+}
+.add-product-container {
+    @include mixin.flex($justify: center);
+    &__btn {
+        @include mixin.flex($justify: center, $align: center, $gap: 8px);
     }
 }
 

@@ -39,6 +39,7 @@ return [
 
     '/women' => [ProductController::class, 'index'],
     '/men' => [ProductController::class, 'index'],
+    '/products' => [ProductController::class, 'show'],
 
     // ...
 ];

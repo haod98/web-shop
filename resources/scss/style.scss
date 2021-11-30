@@ -19,8 +19,13 @@
 //////////////////////////////////////////////
 
 @use "templates/index";
-@use "templates/login";
+@use "templates/form";
 @use "templates/products";
+@use "templates/productListOverview";
+
+* {
+    box-sizing: border-box;
+}
 
 html {
     font-size: base.$default_fz;
@@ -55,7 +60,6 @@ body {
 }
 
 .btn--cta-btn {
-    font-weight: bold;
     text-transform: uppercase;
     background: #fff;
     color: base.$primary;
@@ -64,7 +68,6 @@ body {
 }
 
 .btn--dark {
-    font-weight: bold;
     text-transform: uppercase;
     background: #000;
     color: #fff;
@@ -73,8 +76,14 @@ body {
 }
 
 .btn--add {
-    font-weight: bold;
+    font-weight: normal;
     background: base.$success;
     color: #fff;
     padding: 10px 10px;
+}
+
+.plus-icon {
+    width: 17px;
+    height: 17px;
+    fill: #fff;
 }
