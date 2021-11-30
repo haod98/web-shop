@@ -1,6 +1,6 @@
 <h2 class="align-center">Product List (ADMIN)</h1>
     <div class="form-container">
-        <form action="<?php echo BASE_URL ?>/sign-up/do" class="form" method="POST">
+        <form action="<?php echo BASE_URL ?>/products/add" class="form" method="POST">
             <label class="form__label" for="product">Product name:</label>
             <input class="form__input" type="text" id="product" name="product" placeholder="Product name">
 
