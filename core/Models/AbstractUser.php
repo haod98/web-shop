@@ -226,7 +226,7 @@ abstract class AbstractUser extends AbstractModel
      * @param string $tableName The name of the table you search 
      * @return mixed
      */
-    public static function getSingleUserData(string $tableName): mixed
+    /*     public static function getSingleUserData(string $tableName): mixed
     {
 
         $userId = Session::get(self::LOGGED_IN_USER_ID, null);
@@ -236,5 +236,5 @@ abstract class AbstractUser extends AbstractModel
             return $table;
         }
         return null;
-    }
+    } */
 }

@@ -30,7 +30,7 @@
 
 @media screen and (min-width: base.$medium-width) {
     .collection-overview-container {
-        padding: 30px 150px;
+        @include mixin.flex($justify: center, $align: center, $direction: column);
         &__heading {
             font-size: 2.5rem;
             margin-bottom: 15px;
@@ -38,6 +38,7 @@
         }
         &__text {
             margin: 5px 0 20px;
+            max-width: 600px;
         }
     }
 }

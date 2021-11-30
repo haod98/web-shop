@@ -19,13 +19,6 @@
     <!-- Required attribute removed for easier dev -->
     <div class="form-login-container j-registerForm hide">
         <form action="<?php echo BASE_URL ?>/sign-up/do" class="form-login" method="POST">
-            <label class="form-login__label" for="gender">Title</label>
-            <select class="form-login__input" name="gender" id="">
-                <option value="-" selected disabled>Please select the following options</option>
-                <option value="male">Mr.</option>
-                <option value="female">Ms.</option>
-                <option value="null">--</option>
-            </select>
             <label class="form-login__label" for="fname">First Name</label>
             <input class="form-login__input" type="text" id="fname" name="first_name" placeholder="First name">
 

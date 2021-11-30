@@ -21,13 +21,7 @@
         <?php if (\Core\Middlewares\AuthMiddleware::isAdmin()) : ?>
             <li>
                 <p class="text-reset greeting">
-                    Welcome back <?php echo \App\Models\User::getSingleUserData('first_name') ?> (Admin)
-                </p>
-            </li>
-        <?php elseif (\Core\Middlewares\AuthMiddleware::isLoggedIn()) : ?>
-            <li>
-                <p class="text-reset greeting">
-                    Welcome back <?php echo \App\Models\User::getSingleUserData('first_name') ?>
+                    Admin
                 </p>
             </li>
         <?php endif; ?>

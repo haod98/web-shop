@@ -118,23 +118,9 @@ class AuthController
 
         if ($user->save()) {
             Session::set('success', ['Thank you for signing']);
-            $gender = User::getGender($user->email);
-            /**
-             * Redirecting depending on their gender
-             */
-            switch ($gender) {
-                case 'male':
-                    Redirector::redirect('/men');
-                    break;
-                case 'female':
-                    Redirector::redirect('/women');
-                    break;
-                case 'null';
-                    Redirector::redirect('/');
-                    break;
-            }
+            Redirector::redirect('/');
         } else {
-            Session::set('errors', ['There was an unexpted error']);
+            Session::set('errors', ['There was an unexpected error']);
             Redirector::redirect('/login');
         }
     }
