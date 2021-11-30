@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 29, 2021 at 09:43 PM
+-- Generation Time: Nov 30, 2021 at 10:31 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -47,7 +47,6 @@ CREATE TABLE `addresses` (
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
   `address_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
@@ -65,22 +64,30 @@ CREATE TABLE `products` (
   `name` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
   `price` int(11) NOT NULL,
-  `images` text NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `images` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '[]',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
-  `deleted_at` timestamp NULL DEFAULT '0000-00-00 00:00:00'
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `gender`, `images`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Test product', 'Description lorem ipsum', 12, 'women', '[]', '2021-11-30 19:54:10', '2021-11-30 20:03:01', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products_size_mm`
+-- Table structure for table `products_orders_mm`
 --
 
-CREATE TABLE `products_size_mm` (
+CREATE TABLE `products_orders_mm` (
   `id` int(11) NOT NULL,
-  `prodcuts_id` int(11) NOT NULL,
-  `size_id` int(11) NOT NULL
+  `products_id` int(11) NOT NULL,
+  `orders_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -108,7 +115,6 @@ CREATE TABLE `quantities` (
 CREATE TABLE `sizes` (
   `id` int(11) NOT NULL,
   `size` varchar(255) NOT NULL,
-  `product_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -125,10 +131,9 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
-  `gender` varchar(10) DEFAULT NULL,
   `is_admin` tinyint(1) NOT NULL DEFAULT 0,
   `password` varchar(255) NOT NULL,
-  `newsletter` tinyint(1) NOT NULL DEFAULT 0,
+  `want_newsletter` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -138,8 +143,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `gender`, `is_admin`, `password`, `newsletter`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'max.mustermann@email.com', 'Max', 'Mustermann', 'm', 1, '$2a$12$Iok3WcgII9wqge7tzKDnbeRBQdbunJOooGflz0VixsFf0d/6lmyL2', 0, '2021-11-25 11:32:36', '2021-11-29 19:44:02', NULL);
+INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `is_admin`, `password`, `want_newsletter`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'max.mustermann@email.com', 'Max', 'Mustermann', 1, '$2a$12$Iok3WcgII9wqge7tzKDnbeRBQdbunJOooGflz0VixsFf0d/6lmyL2', 0, '2021-11-25 11:32:36', '2021-11-29 19:44:02', NULL);
 
 --
 -- Indexes for dumped tables
@@ -157,8 +162,7 @@ ALTER TABLE `addresses`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `address_id` (`address_id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `address_id` (`address_id`);
 
 --
 -- Indexes for table `products`
@@ -167,12 +171,12 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `products_size_mm`
+-- Indexes for table `products_orders_mm`
 --
-ALTER TABLE `products_size_mm`
+ALTER TABLE `products_orders_mm`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `prodcuts_id` (`prodcuts_id`),
-  ADD KEY `size_id` (`size_id`);
+  ADD KEY `orders_id` (`orders_id`),
+  ADD KEY `products_id` (`products_id`);
 
 --
 -- Indexes for table `quantities`
@@ -186,8 +190,7 @@ ALTER TABLE `quantities`
 -- Indexes for table `sizes`
 --
 ALTER TABLE `sizes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -215,12 +218,12 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `products_size_mm`
+-- AUTO_INCREMENT for table `products_orders_mm`
 --
-ALTER TABLE `products_size_mm`
+ALTER TABLE `products_orders_mm`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -239,7 +242,7 @@ ALTER TABLE `sizes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
@@ -255,15 +258,14 @@ ALTER TABLE `addresses`
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`address_id`) REFERENCES `addresses` (`id`),
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`address_id`) REFERENCES `addresses` (`id`);
 
 --
--- Constraints for table `products_size_mm`
+-- Constraints for table `products_orders_mm`
 --
-ALTER TABLE `products_size_mm`
-  ADD CONSTRAINT `products_size_mm_ibfk_1` FOREIGN KEY (`prodcuts_id`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `products_size_mm_ibfk_2` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`);
+ALTER TABLE `products_orders_mm`
+  ADD CONSTRAINT `products_orders_mm_ibfk_1` FOREIGN KEY (`orders_id`) REFERENCES `orders` (`id`),
+  ADD CONSTRAINT `products_orders_mm_ibfk_2` FOREIGN KEY (`products_id`) REFERENCES `products` (`id`);
 
 --
 -- Constraints for table `quantities`
