@@ -2,7 +2,7 @@
     <div class="form-container">
         <form action="<?php echo BASE_URL ?>/products/add" class="form" method="POST">
             <label class="form__label" for="product">Product name:</label>
-            <input class="form__input" type="text" id="product" name="product" placeholder="Product name">
+            <input class="form__input" type="text" id="product" name="name" placeholder="Product name">
 
             <label class="form__label" for="price">Product price</label>
             <input class="form__input" type="text" id="price" name="price" placeholder="Product price">

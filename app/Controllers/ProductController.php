@@ -31,22 +31,40 @@ class ProductController
         ]);
     }
 
-    public function add()
+    private function validateForm()
     {
         $validator = new Validator();
-        $validator->letters($_POST['product'], required: true, max: 255, min: 2, label: "Product name");
-
+        $validator->letters($_POST['name'], required: true, max: 255, min: 2, label: "Product name");
 
         $errors = $validator->getErrors();
-        var_dump($errors);
-        exit;
-        if (!empty($errors)) {
 
-            Session::get('errors', $errors);
-            Redirector::redirect('/products');
-        } else {
-            Session::get('success', ['Product added']);
+
+        return $errors;
+    }
+
+    public function add()
+    {
+        AuthMiddleware::isAdminOrFail();
+        $errors = self::validateForm();
+
+        if (!empty($errors)) {
+            Session::set('errors', $errors);
             Redirector::redirect('/products');
         }
+
+        $product = new Product();
+        $product->fill($_POST);
+
+        if (!$product->save()) {
+            Session::set('errors', ['There was an unexpected error']);
+            Redirector::redirect('/products');
+        }
+
+        Session::set('success', ['Product successful added']);
+        Redirector::redirect('/products');
+
+
+        // Session::set('success', ['Product added']);
+        // Redirector::redirect('/products');
     }
 }

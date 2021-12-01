@@ -16,6 +16,9 @@
         }
     }
 }
+.form__textarea {
+    resize: vertical;
+}
 .form-container {
     @include mixin.flex($justify: center);
     margin-top: 20px;
