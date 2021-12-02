@@ -1,0 +1,12 @@
+@use "../base";
+.product-list-container .product-container:nth-child(odd) {
+    background: darken(base.$bg-primary, 10%);
+}
+
+.product-container {
+    margin: 0 -20px;
+    padding: 20px 20px 40px;
+    .bold {
+        font-weight: bold;
+    }
+}

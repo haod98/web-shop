@@ -35,6 +35,7 @@ class ProductController
     {
         $validator = new Validator();
         $validator->letters($_POST['name'], required: true, max: 255, min: 2, label: "Product name");
+        $validator->int((int)[$_POST['price']]);
 
         $errors = $validator->getErrors();
 

@@ -59,27 +59,49 @@ body {
     font-size: 0.8rem;
 }
 
-.btn--cta-btn {
+.btn {
+    @include mixin.btn-reset;
     text-transform: uppercase;
-    background: #fff;
-    color: base.$primary;
     padding: 20px 15px;
     letter-spacing: 2px;
-}
-
-.btn--dark {
-    text-transform: uppercase;
-    background: #000;
-    color: #fff;
-    padding: 20px 15px;
-    letter-spacing: 2px;
-}
-
-.btn--add {
-    font-weight: normal;
-    background: base.$success;
-    color: #fff;
-    padding: 10px 10px;
+    margin-right: 10px;
+    &--cta-btn {
+        background: #fff;
+        color: base.$primary;
+    }
+    &--dark {
+        background: #000;
+        color: #fff;
+    }
+    &--add {
+        font-weight: normal;
+        background: base.$success;
+        color: #fff;
+        padding: 10px 10px;
+        &:hover {
+            background: darken(base.$success, 5%);
+        }
+    }
+    &--edit {
+        text-transform: none;
+        background: base.$edit;
+        color: #fff;
+        padding: 10px 10px;
+        letter-spacing: 0;
+        &:hover {
+            background: darken(base.$edit, 5%);
+        }
+    }
+    &--delete {
+        text-transform: none;
+        background: base.$danger;
+        color: #fff;
+        padding: 10px 10px;
+        letter-spacing: 0;
+        &:hover {
+            background: darken(base.$danger, 5%);
+        }
+    }
 }
 
 .plus-icon {
