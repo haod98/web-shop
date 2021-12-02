@@ -17,8 +17,8 @@
         <label for="description">Product description</label>
         <textarea name="description" id="description" cols="30" rows="10" class="form__textarea" placeholder="Your description of the product"></textarea>
 
-        <label for="images">Add images:</label>
-        <input type="file" name="images" id="images">
+        <label for="images" class="form__label">Add images:</label>
+        <input type="file" name="images[]" id="images" class="form__file" multiple>
 
         <button class="btn btn--add add-product-container__btn">Add product
             <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-plus-square-fill plus-icon" viewBox="0 0 16 16">
@@ -36,6 +36,10 @@
             <p>
                 <span class="bold">Product gender: </span><br><?php echo $product->gender ?>
             </p>
+            <?php foreach ($product->getImages() as $image) : ?>
+                <img src="<?php echo BASE_URL  . $image ?>" alt="">
+
+            <?php endforeach; ?>
             <a href="" class="link-reset btn btn--edit">
                 Edit
             </a>

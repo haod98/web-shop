@@ -39,7 +39,7 @@ abstract class AbstractFile
      * @return bool
      * @todo: comment
      */
-    public static function filesHaveBeenUploaded(string $keyInSuperglobal): bool
+    public static function filesHaveBeenUploaded(string $keyInSuperglobal = 'files'): bool
     {
         return ($_FILES[$keyInSuperglobal]['error'][0] !== UPLOAD_ERR_NO_FILE);
     }
@@ -51,7 +51,7 @@ abstract class AbstractFile
      *
      * @return array
      */
-    public static function createFromUploadedFiles(string $keyInSuperglobal): array
+    public static function createFromUploadedFiles(string $keyInSuperglobal = 'files'): array
     {
         /**
          * Daten zu einem bestimmten Upload Feld aus $_FILES holen.
@@ -81,7 +81,6 @@ abstract class AbstractFile
                 );
                 $filesObjects[] = $file;
             }
-
             /**
              * Liste der generierten File Objekte zurückgeben.
              */
@@ -225,5 +224,4 @@ abstract class AbstractFile
          */
         return -1;
     }
-
 }

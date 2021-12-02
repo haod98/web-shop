@@ -9,6 +9,7 @@ use App\Models\Product;
 use Core\Helpers\Redirector;
 use Core\Session;
 use Core\Validator;
+use Core\Models\File;
 
 class ProductController
 {
@@ -37,27 +38,29 @@ class ProductController
         $validator->letters($_POST['name'], required: true, max: 255, min: 2, label: "Product name");
         $validator->int((int)[$_POST['price']]);
 
-        $errors = $validator->getErrors();
+        $validationErrors = $validator->getErrors();
 
 
-        return $errors;
+        return $validationErrors;
     }
 
     public function add()
     {
         AuthMiddleware::isAdminOrFail();
-        $errors = self::validateForm();
+        $validationErrors = self::validateForm();
 
-        if (!empty($errors)) {
-            Session::set('errors', $errors);
+        if (!empty($validationErrors)) {
+            Session::set('validationErrors', $validationErrors);
             Redirector::redirect('/products');
         }
 
         $product = new Product();
         $product->fill($_POST);
 
+        $product = $this->handleUploadedFiles($product);
+
         if (!$product->save()) {
-            Session::set('errors', ['There was an unexpected error']);
+            Session::set('validationErrors', ['There was an unexpected error']);
             Redirector::redirect('/products');
         }
 
@@ -65,7 +68,28 @@ class ProductController
         Redirector::redirect('/products');
 
 
-        // Session::set('success', ['Product added']);
-        // Redirector::redirect('/products');
+        Session::set('success', ['Product added']);
+        Redirector::redirect('/products');
+    }
+
+
+
+    /**
+     * handleUploadedFiles
+     *
+     * @param  mixed $product
+     * @return Product
+     */
+    public function handleUploadedFiles(Product $product): ?Product
+    {
+        $files = File::createFromUploadedFiles('images');
+
+        foreach ($files as $file) {
+
+            $storagePath = $file->putToUploadsFolder();
+
+            $product->addImages([$storagePath]);
+        }
+        return $product;
     }
 }

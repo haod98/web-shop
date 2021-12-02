@@ -32,7 +32,8 @@
 
         &__input,
         &__select,
-        &__textarea {
+        &__textarea,
+        &__file {
             border-style: none;
             padding: 10px 10px;
             background: #fff;
@@ -53,6 +54,9 @@
             font-weight: bold;
             letter-spacing: 2px;
             padding: 10px 0;
+        }
+        &__file {
+            margin-bottom: 15px;
         }
     }
 }
