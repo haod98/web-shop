@@ -30,13 +30,13 @@ class Product extends AbstractModel
 
         $tablename = self::getTablenameFromClassname();
         if (!empty($this->id)) {
-
-            $result = $database->query("UPDATE $tablename SET name = ?, price = ?, description = ?, gender = ?, images = ?", [
+            $result = $database->query("UPDATE $tablename SET name = ?, price = ?, description = ?, gender = ?, images = ? WHERE id = ?", [
                 "s:name" => $this->name,
                 "i:price" => $this->price,
                 "s:description" => $this->description,
                 "s:gender" => $this->gender,
-                "s:images" => $this->images
+                "s:images" => $this->images,
+                "i:id" => $this->id
             ]);
         } else {
             $result = $database->query("INSERT INTO $tablename SET name = ?, price = ?, description = ?, gender = ? , images = ?", [

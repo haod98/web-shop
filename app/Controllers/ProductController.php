@@ -48,10 +48,10 @@ class ProductController
     {
 
         AuthMiddleware::isAdminOrFail();
-        $validationErrors = self::validateForm();
+        $validationErrors = $this->validateForm();
 
         if (!empty($validationErrors)) {
-            Session::set('validationErrors', $validationErrors);
+            Session::set('errors', $validationErrors);
             Redirector::redirect('/products');
         }
 
@@ -61,7 +61,7 @@ class ProductController
         $product = $this->handleUploadedFiles($product);
 
         if (!$product->save()) {
-            Session::set('validationErrors', ['There was an unexpected error']);
+            Session::set('errors', ['There was an unexpected error']);
             Redirector::redirect('/products');
         }
         Session::set('success', ['Product successfully added']);
@@ -69,14 +69,20 @@ class ProductController
     }
 
 
-    public function update($id)
+    /**
+     * update
+     *
+     * @param  int $id
+     * @return void
+     */
+    public function update(int $id)
     {
         AuthMiddleware::isAdminOrFail();
-        $validationErrors = self::validateForm();
+        $validationErrors = $this->validateForm();
 
         if (!empty($validationErrors)) {
-            Session::set('validationErrors', $validationErrors);
-            Redirector::redirect('/products');
+            Session::set('errors', $validationErrors);
+            Redirector::redirect("/products/${id}/edit");
         }
 
 
@@ -87,7 +93,7 @@ class ProductController
         $product = $this->handleUploadedFiles($product);
 
         if (!$product->save()) {
-            Session::set('validationErrors', ['There was an unexpected error']);
+            Session::set('errors', ['There was an unexpected error']);
             Redirector::redirect('/products');
         }
 

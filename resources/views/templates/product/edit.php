@@ -1,6 +1,6 @@
 <h2 class="align-center">Edit Product (Admin)</h2>
 <div class="form-container">
-    <form action="<?php echo BASE_URL . "/products/{$product->id}/edit/do" ?>" class="form" method="POST" enctype="multipart/form-data">
+    <form action="<?php echo BASE_URL . "/products/{$product->id}/edit/update" ?>" class="form" method="POST" enctype="multipart/form-data">
         <label class="form__label" for="product">Product name:</label>
         <input class="form__input" type="text" id="product" name="name" placeholder="Product name" value="<?php echo $product->name ?>">
 
