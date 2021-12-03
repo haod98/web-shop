@@ -46,6 +46,7 @@ class ProductController
 
     public function add()
     {
+
         AuthMiddleware::isAdminOrFail();
         $validationErrors = self::validateForm();
 
@@ -63,15 +64,45 @@ class ProductController
             Session::set('validationErrors', ['There was an unexpected error']);
             Redirector::redirect('/products');
         }
-
-        Session::set('success', ['Product successful added']);
-        Redirector::redirect('/products');
-
-
-        Session::set('success', ['Product added']);
+        Session::set('success', ['Product successfully added']);
         Redirector::redirect('/products');
     }
 
+
+    public function update($id)
+    {
+        AuthMiddleware::isAdminOrFail();
+        $validationErrors = self::validateForm();
+
+        if (!empty($validationErrors)) {
+            Session::set('validationErrors', $validationErrors);
+            Redirector::redirect('/products');
+        }
+
+
+        $product = Product::findOrFail($id);
+
+        $product->fill($_POST);
+
+        $product = $this->handleUploadedFiles($product);
+
+        if (!$product->save()) {
+            Session::set('validationErrors', ['There was an unexpected error']);
+            Redirector::redirect('/products');
+        }
+
+        Session::set('success', ['Product successfully updated']);
+        Redirector::redirect('/products');
+    }
+
+    public function edit($id)
+    {
+        AuthMiddleware::isAdminOrFail();
+        $product = Product::findOrFail($id);
+        View::render('product/edit', [
+            'product' => $product
+        ]);
+    }
 
 
     /**

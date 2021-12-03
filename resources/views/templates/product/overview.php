@@ -10,8 +10,8 @@
         <label class="form__label" for="gender">Product gender:</label>
         <select class="form__input" name="gender" id="gender">
             <option value="-" selected disabled>-- Please select --</option>
-            <option value="male">For men</option>
-            <option value="female">For women</option>
+            <option value="men">For men</option>
+            <option value="women">For women</option>
         </select>
 
         <label for="description">Product description</label>
@@ -40,7 +40,7 @@
                 <img src="<?php echo BASE_URL  . $image ?>" alt="">
 
             <?php endforeach; ?>
-            <a href="" class="link-reset btn btn--edit">
+            <a href="<?php echo BASE_URL . "/products/$product->id/edit" ?>" class="link-reset btn btn--edit">
                 Edit
             </a>
             <a href="" class="link-reset btn btn--delete">

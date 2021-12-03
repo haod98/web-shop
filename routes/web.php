@@ -41,6 +41,8 @@ return [
     '/men' => [ProductController::class, 'index'],
     '/products' => [ProductController::class, 'show'],
     '/products/add' => [ProductController::class, 'add'],
+    '/products/{id}/edit' => [ProductController::class, 'edit'],
+    '/products/{id}/edit/do' => [ProductController::class, 'update'],
 
     // ...
 ];
