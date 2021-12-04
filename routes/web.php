@@ -37,8 +37,8 @@ return [
      * Products Routes
      */
 
-    '/women' => [ProductController::class, 'index'],
-    '/men' => [ProductController::class, 'index'],
+    '/women' => [ProductController::class, 'indexWomen'],
+    '/men' => [ProductController::class, 'indexMen'],
     '/products' => [ProductController::class, 'show'],
     '/products/add' => [ProductController::class, 'add'],
     '/products/{id}/edit' => [ProductController::class, 'edit'],

@@ -36,9 +36,7 @@
             <p class="product-container-text"><span class="bold ">Product description: </span><br><?php echo $product->description ?></p>
             <p class="product-container-text"><span class="bold">Product gender: </span><br><?php echo $product->gender ?></p>
             <div class="product-list-image-container">
-                <?php foreach ($product->getSingleImage() as $image) : ?>
-                    <img src="<?php echo BASE_URL  . $image ?>" alt="" class="product-list-image">
-                <?php endforeach; ?>
+                <img src="<?php echo BASE_URL  . $product->getFirstImage(); ?>" alt="" class="product-list-image">
             </div>
             <div>
                 <a href="<?php echo BASE_URL . "/products/$product->id/edit" ?>" class="link-reset btn btn--edit">

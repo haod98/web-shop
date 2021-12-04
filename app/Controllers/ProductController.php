@@ -14,11 +14,21 @@ use Core\Models\File;
 class ProductController
 {
 
-    public function index()
+    public function indexWomen()
     {
-        View::render("product/index");
+        $products = Product::all();
+        View::render("product/indexWomen", [
+            'products' => $products
+        ]);
     }
 
+    public function indexMen()
+    {
+        $products = Product::all();
+        View::render("product/indexMen", [
+            'products' => $products
+        ]);
+    }
 
     public function show()
     {

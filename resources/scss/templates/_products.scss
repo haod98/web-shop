@@ -4,7 +4,7 @@
 .collection-overview-container {
     background: #fff;
     margin: 0 -20px;
-    padding: 20px 20px;
+    padding: 40px 20px;
     text-align: center;
     &__heading {
         color: base.$primary;
@@ -37,6 +37,84 @@
         &__text {
             margin: 5px 0 20px;
             max-width: 600px;
+        }
+    }
+}
+
+.products-container {
+    @include mixin.flex($gap: 20px);
+    margin: 30px 0;
+    flex-wrap: wrap;
+    .single-product {
+        @include mixin.flex($direction: column, $justify: center, $align: center, $grow: 1);
+        flex-basis: 45%;
+        &__image {
+            max-width: 300px;
+            width: 100%;
+        }
+        &__name {
+            font-size: 0.9rem;
+            margin: 0;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        &__price {
+            margin: 0;
+            font-size: 0.8rem;
+        }
+    }
+}
+
+@media (min-width: base.$medium-width) {
+    .products-container {
+        @include mixin.flex($gap: 20px);
+        margin: 30px 0;
+        flex-wrap: wrap;
+        .single-product {
+            @include mixin.flex($direction: column, $justify: center, $align: center, $grow: 1);
+            flex-basis: 30%;
+            &__image {
+                max-width: 300px;
+                width: 100%;
+            }
+            &__name {
+                font-size: 0.9rem;
+                margin: 0;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+            &__price {
+                margin: 0;
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
+
+@media (min-width: base.$large-width) {
+    .products-container {
+        @include mixin.flex($gap: 20px);
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 1300px;
+        flex-wrap: wrap;
+        .single-product {
+            @include mixin.flex($direction: column, $justify: center, $align: center, $grow: 1);
+            flex-basis: 20%;
+            &__image {
+                max-width: 300px;
+                width: 100%;
+            }
+            &__name {
+                font-size: 0.9rem;
+                margin: 0;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+            &__price {
+                margin: 0;
+                font-size: 0.8rem;
+            }
         }
     }
 }
