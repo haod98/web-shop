@@ -92,6 +92,8 @@ class ProductController
 
         $product = $this->handleUploadedFiles($product);
 
+        $product = $this->handleDeleteFiles($product);
+
         if (!$product->save()) {
             Session::set('errors', ['There was an unexpected error']);
             Redirector::redirect('/products');
@@ -129,6 +131,21 @@ class ProductController
         }
         return $product;
     }
+
+    public function handleDeleteFiles(Product $product): ?Product
+    {
+
+        if (isset($_POST['delete-images'])) {
+            foreach ($_POST['delete-images'] as $deleteImage) {
+                $product->removeImages([$deleteImage]);
+
+                File::delete($deleteImage);
+            }
+        }
+
+        return $product;
+    }
+
 
     public function delete($id)
     {

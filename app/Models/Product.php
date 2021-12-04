@@ -92,6 +92,20 @@ class Product extends AbstractModel
         }
     }
 
+    public function removeImages(array $images): array
+    {
+        $currentImages = $this->getImages();
+        $filteredImages = array_filter($currentImages, function ($image) use ($images) {
+            if (in_array($image, $images)) {
+                return false;
+            }
+            return true;
+        });
+        $this->setImages($filteredImages);
+
+        return $filteredImages;
+    }
+
     /**
      * setImages
      *

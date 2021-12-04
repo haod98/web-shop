@@ -18,16 +18,17 @@
     .product-container-text {
         margin-bottom: 5px;
     }
-    .product-list-image-container {
-        margin-bottom: 20px;
-        display: flex;
-        justify-content: center;
-        .product-list-image {
-            max-width: 250px;
-        }
-    }
 }
 
+.product-list-image-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    .product-list-image {
+        max-width: 250px;
+        margin-right: 15px;
+    }
+}
 @media (min-width: base.$medium-width) {
     .product-list-container {
         margin: 0 auto;

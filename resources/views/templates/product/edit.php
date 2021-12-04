@@ -18,6 +18,17 @@
 
         <label for="images" class="form__label">Add images:</label>
         <input type="file" name="images[]" id="images" class="form__file" multiple>
+        <div class="product-list-image-container">
+            <?php foreach ($product->getImages() as $image) : ?>
+                <div>
+                    <img src="<?php echo BASE_URL  . $image ?>" alt="" class="product-list-image">
+                    <div class="align-center">
+                        <input type="checkbox" id="delete-images[<?php echo $image ?>]" name="delete-images[]" value="<?php echo $image ?>">
+                        <label for="delete-images[<?php echo $image ?>]">Delete</label>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
 
         <div class="edit-btn-container">
             <button class="btn btn--add add-product-container__btn btn-helper">Update
