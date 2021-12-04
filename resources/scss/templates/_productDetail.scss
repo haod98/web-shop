@@ -1,0 +1,53 @@
+@use "../mixin";
+@use "../base";
+
+.product-detail-container {
+    @include mixin.flex($direction: column, $align: center);
+    .stage-container {
+        &__image {
+            max-width: 400px;
+            width: 100%;
+        }
+    }
+
+    .gallery-container {
+        margin: 5px 0 15px;
+        @include mixin.flex($gap: 10px);
+        &__image {
+            max-width: 80px;
+            width: 100%;
+        }
+    }
+}
+
+@media (min-width: base.$medium-width) {
+    .product-and-add {
+        display: flex;
+        gap: 25px;
+        .product-detail-container {
+            @include mixin.flex($direction: row, $align: center, $gap: 15px, $order: 1, $justify: end);
+            flex-basis: 50%;
+            .stage-container {
+                @include mixin.flex($order: 2);
+                &__image {
+                    max-width: 800px;
+                    width: 100%;
+                }
+            }
+
+            .gallery-container {
+                margin: 5px 0 15px;
+                @include mixin.flex($gap: 10px, $direction: column, $order: 1);
+                &__image {
+                    max-width: 80px;
+                    width: 100%;
+                }
+            }
+        }
+        .product-action {
+            @include mixin.flex($direction: column, $order: 2, $justify: center);
+            flex-basis: 50%;
+            max-width: 500px;
+        }
+    }
+}

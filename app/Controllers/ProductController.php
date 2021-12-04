@@ -176,4 +176,14 @@ class ProductController
         Session::set('success', ['Product successfully deleted']);
         Redirector::redirect("/products");
     }
+
+
+    public function productDetail($id)
+    {
+        $product = Product::findOrFail($id);
+
+        View::render('product/detail', [
+            'product' => $product
+        ]);
+    }
 }

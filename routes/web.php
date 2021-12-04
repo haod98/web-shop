@@ -45,6 +45,7 @@ return [
     '/products/{id}/edit/update' => [ProductController::class, 'update'],
     '/products/{id}/delete/confirm' => [ProductController::class, 'deleteConfirm'],
     '/products/{id}/delete' => [ProductController::class, 'delete'],
+    '/products/details/{id}' => [ProductController::class, 'productDetail']
 
     // ...
 ];
