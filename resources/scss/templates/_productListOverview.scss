@@ -1,12 +1,48 @@
 @use "../base";
+@use "../mixin";
 .product-list-container .product-container:nth-child(odd) {
     background: darken(base.$bg-primary, 10%);
 }
 
+.product-list-container {
+    outline: 1px solid black;
+}
+
 .product-container {
     margin: 0 -20px;
+    text-align: center;
     padding: 20px 20px 40px;
     .bold {
         font-weight: bold;
+    }
+    .product-container-text {
+        margin-bottom: 5px;
+    }
+    .product-list-image-container {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        .product-list-image {
+            max-width: 250px;
+        }
+    }
+}
+
+@media (min-width: base.$medium-width) {
+    .product-list-container {
+        margin: 0 auto;
+        @include mixin.flex();
+        flex-wrap: wrap;
+        .product-container {
+            margin: 0;
+            @include mixin.flex($direction: column);
+            flex-basis: 50%;
+        }
+    }
+}
+
+@media (min-width: base.$large-width) {
+    .product-container {
+        flex-basis: 33.33% !important;
     }
 }

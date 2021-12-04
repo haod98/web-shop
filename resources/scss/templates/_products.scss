@@ -16,10 +16,13 @@
         margin: 15px 0 15px;
     }
 }
-.add-product-container {
-    @include mixin.flex($justify: center);
-    &__btn {
-        @include mixin.flex($justify: center, $align: center, $gap: 8px);
+.edit-btn-container {
+    @include mixin.flex($justify: end, $align: center, $gap: 5px);
+    .add-product-container {
+        @include mixin.flex($justify: center);
+        &__btn {
+            @include mixin.flex($justify: center, $align: center, $gap: 8px);
+        }
     }
 }
 

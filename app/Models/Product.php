@@ -81,6 +81,17 @@ class Product extends AbstractModel
         return json_decode($this->images);
     }
 
+    public function getSingleImage(): array
+    {
+        $images = json_decode($this->images);
+        if (!empty($images)) {
+            $singleImage = [$images[0]];
+            return $singleImage;
+        } else {
+            return [];
+        }
+    }
+
     /**
      * setImages
      *

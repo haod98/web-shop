@@ -30,22 +30,24 @@
 <div class="product-list-container">
     <?php foreach ($products as $product) : ?>
         <div class="product-container">
-            <p><span class="bold">Product name: </span><br><?php echo $product->name ?></p>
-            <p><span class="bold">Product price: </span><br><?php echo $product->price ?> €</p>
-            <p><span class="bold">Product description: </span><br><?php echo $product->description ?></p>
-            <p>
-                <span class="bold">Product gender: </span><br><?php echo $product->gender ?>
-            </p>
-            <?php foreach ($product->getImages() as $image) : ?>
-                <img src="<?php echo BASE_URL  . $image ?>" alt="">
-
-            <?php endforeach; ?>
-            <a href="<?php echo BASE_URL . "/products/$product->id/edit" ?>" class="link-reset btn btn--edit">
-                Edit
-            </a>
-            <a href="<?php echo BASE_URL . "/products/$product->id/delete" ?>" class="link-reset btn btn--delete">
-                Delete
-            </a>
+            <p class="product-container-text"><span class="bold ">Product id: </span><br><?php echo $product->id ?></p>
+            <p class="product-container-text"><span class="bold ">Product name: </span><br><?php echo $product->name ?></p>
+            <p class="product-container-text"><span class="bold ">Product price: </span><br><?php echo $product->price ?> €</p>
+            <p class="product-container-text"><span class="bold ">Product description: </span><br><?php echo $product->description ?></p>
+            <p class="product-container-text"><span class="bold">Product gender: </span><br><?php echo $product->gender ?></p>
+            <div class="product-list-image-container">
+                <?php foreach ($product->getSingleImage() as $image) : ?>
+                    <img src="<?php echo BASE_URL  . $image ?>" alt="" class="product-list-image">
+                <?php endforeach; ?>
+            </div>
+            <div>
+                <a href="<?php echo BASE_URL . "/products/$product->id/edit" ?>" class="link-reset btn btn--edit">
+                    Edit
+                </a>
+                <a href="<?php echo BASE_URL . "/products/$product->id/delete" ?>" class="link-reset btn btn--delete">
+                    Delete
+                </a>
+            </div>
         </div>
     <?php endforeach; ?>
 </div>

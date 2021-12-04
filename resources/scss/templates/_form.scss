@@ -21,7 +21,7 @@
 }
 .form-container {
     @include mixin.flex($justify: center);
-    margin: 20px 0 20px;
+    margin: 20px 0 40px;
 
     .form {
         @include mixin.flex(column);
