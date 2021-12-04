@@ -16,3 +16,18 @@
     background: lighten(base.$success, 20%);
     border: solid base.$success 1px;
 }
+
+.delete-confirm {
+    margin: 20px 0;
+    padding: 30px 0;
+    background: #fff;
+    .delete-confirm-text {
+        margin: 20px 0;
+    }
+}
+
+@media (min-width: base.$medium-width) {
+    .delete-confirm {
+        margin: 20px 25%;
+    }
+}

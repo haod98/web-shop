@@ -129,4 +129,24 @@ class ProductController
         }
         return $product;
     }
+
+    public function delete($id)
+    {
+        AuthMiddleware::isAdminOrFail();
+        $product = Product::findOrFail($id);
+        View::render('product/delete', [
+            'product' => $product
+        ]);
+    }
+
+    public function deleteConfirm($id)
+    {
+        AuthMiddleware::isAdminOrFail();
+
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        Session::set('success', ['Product successfully deleted']);
+        Redirector::redirect("/products");
+    }
 }

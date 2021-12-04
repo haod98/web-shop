@@ -43,7 +43,7 @@
             <a href="<?php echo BASE_URL . "/products/$product->id/edit" ?>" class="link-reset btn btn--edit">
                 Edit
             </a>
-            <a href="" class="link-reset btn btn--delete">
+            <a href="<?php echo BASE_URL . "/products/$product->id/delete" ?>" class="link-reset btn btn--delete">
                 Delete
             </a>
         </div>
