@@ -8,6 +8,8 @@
 use App\Controllers\AuthController;
 use App\Controllers\HomeController;
 use App\Controllers\ProductController;
+use App\Controllers\ProfileController;
+use Core\Middlewares\AuthMiddleware;
 
 /**
  * Die Dateien im /routes Ordner beinhalten ein Mapping von einer URL auf eine eindeutige Controller & Action
@@ -31,7 +33,7 @@ return [
     '/login/do' => [AuthController::class, 'loginDo'],
     '/logout' => [AuthController::class, 'logout'],
     '/sign-up/do' => [AuthController::class, 'signUpDo'],
-
+    '/home/logout' => [AuthController::class, 'logout'],
 
     /**
      * Products Routes
@@ -45,7 +47,9 @@ return [
     '/products/{id}/edit/update' => [ProductController::class, 'update'],
     '/products/{id}/delete/confirm' => [ProductController::class, 'deleteConfirm'],
     '/products/{id}/delete' => [ProductController::class, 'delete'],
-    '/products/details/{id}' => [ProductController::class, 'productDetail']
+    '/products/details/{id}' => [ProductController::class, 'productDetail'],
 
     // ...
+
+    '/home' => [ProfileController::class, 'home'],
 ];

@@ -1,0 +1,5 @@
+@use "../mixin";
+@use "../base";
+.welcome-message {
+    @include mixin.flex($justify: space-between, $align: center);
+}
