@@ -1,7 +1,7 @@
 <section>
     <div class="product-and-add">
         <div class="product-detail-container">
-            <div class="stage-container">
+            <div class="stage-container j-stage">
                 <img src="<?php
 
 
@@ -10,7 +10,7 @@
             <div class="gallery-container">
                 <?php foreach ($product->getImages() as $images) : ?>
                     <div>
-                        <img src="<?php echo BASE_URL . $images; ?>" alt="" class="gallery-container__image">
+                        <img src="<?php echo BASE_URL . $images; ?>" alt="" class="gallery-container__image j-images">
                     </div>
                 <?php endforeach; ?>
             </div>
