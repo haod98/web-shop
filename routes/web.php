@@ -5,6 +5,7 @@
  * immer den gesamten Namespace anzugeben.
  */
 
+use App\Controllers\AddressController;
 use App\Controllers\AuthController;
 use App\Controllers\CartController;
 use App\Controllers\HomeController;
@@ -68,6 +69,14 @@ return [
      */
     '/checkout/summary' => [CheckoutController::class, 'summary'],
     '/checkout/finish' => [CheckoutController::class, 'finish'],
+
+
+    /**
+     * Address Routes
+     */
+    '/checkout/address' => [AddressController::class, 'checkout'],
+    '/checkout/address/do' => [AddressController::class, 'addressUpdate'],
+
     /**
      * Home Routes
      */

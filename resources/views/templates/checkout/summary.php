@@ -9,6 +9,10 @@
                 echo $user->last_name ?>
             </p>
 
+            <p class="cart-detail__label">Address:</p>
+            <p class="cart-detail__info m-0"><?php echo $address[0]->address ?></p>
+            <p class="cart-detail__info m-0"><?php echo $address[0]->postal_code ?></p>
+            <p class="cart-detail__info m-0"><?php echo $address[0]->city ?></p>
         </div>
         <?php foreach ($cartContents as $cartContent) : ?>
             <div class="product-in-cart">

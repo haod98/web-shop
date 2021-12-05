@@ -321,6 +321,9 @@ abstract class AbstractModel
          */
         $particles = explode('\\', $calledClass); // ['App', 'Models', 'User']
         $classname = array_pop($particles); // 'User'
+        if (substr($classname, -1) === "s") {
+            return   strtolower($classname);
+        }
         $tablename = strtolower($classname) . 's'; // 'users'
 
         /**
