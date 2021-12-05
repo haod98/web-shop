@@ -20,7 +20,7 @@
             <p><?php echo $product->price ?> €</p>
             <p><?php echo $product->description ?></p>
             <?php if (!\App\Models\User::isLoggedIn()) : ?>
-                <a href="<?php echo BASE_URL . "/login" ?>">Please login to add to basket</a>
+                <a href="<?php echo BASE_URL . "/login" ?>" class="btn btn--dark btn-reminder link-reset align-center">Please login to add to basket</a>
             <?php endif; ?>
             <?php if (\Core\Middlewares\AuthMiddleware::isLoggedIn()) : ?>
                 <a href="<?php echo BASE_URL . "/products/$product->id/add-to-cart" ?>">Add to cart</a>

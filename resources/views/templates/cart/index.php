@@ -1,7 +1,7 @@
 <?php if (!\App\Models\User::isLoggedIn()) : ?>
     <div class="align-center">
         <h2>Not logged in</h2>
-        <a href="<?php echo BASE_URL . "/login" ?>">Please login to use the cart</a>
+        <a href="<?php echo BASE_URL . "/login" ?>" class="btn btn--dark btn-reminder link-reset">Please login to use the cart</a>
     </div>
 <?php else : ?>
 
