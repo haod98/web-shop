@@ -85,4 +85,5 @@ return [
      * Home Routes
      */
     '/home' => [ProfileController::class, 'home'],
+    '/home/update' => [ProfileController::class, 'update'],
 ];

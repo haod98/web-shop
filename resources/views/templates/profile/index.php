@@ -7,12 +7,12 @@
 
 <h3 class="align-center">Edit your profile</h3>
 <div class="form-container">
-    <form action="" class="form" method="POST">
+    <form action="<?php echo BASE_URL . "/home/update" ?>" class=" form" method="POST">
         <label class="form__label" for="email">E-Mail</label>
         <input class="form__input" type="text" id="email" name="email" placeholder="E-Mail" value="<?php echo $user->email ?>">
         <label class="form__label" for="password">Password</label>
         <input class="form__input" type="password" id="password" placeholder="Password" name="password">
-        <label class="form__label" for="password_repeat">Password</label>
+        <label class="form__label" for="password_repeat">Password repeat</label>
         <input class="form__input" type="password" id="password_repeat" placeholder="Repeat password" name="password_repeat">
         <button type="submit" class="btn form__submit">Change</button>
     </form>
