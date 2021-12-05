@@ -10,6 +10,7 @@ use App\Controllers\CartController;
 use App\Controllers\HomeController;
 use App\Controllers\ProductController;
 use App\Controllers\ProfileController;
+use App\Controllers\CheckoutController;
 use Core\Middlewares\AuthMiddleware;
 
 /**
@@ -60,6 +61,13 @@ return [
     '/products/{id}/add-to-cart' => [CartController::class, 'add'],
     '/products/{id}/remove-from-cart' => [CartController::class, 'remove'],
     '/products/{id}/remove-all-from-cart' => [CartController::class, 'removeAll'],
+
+
+    /**
+     * Checkout Routes
+     */
+    '/checkout/summary' => [CheckoutController::class, 'summary'],
+    '/checkout/finish' => [CheckoutController::class, 'finish'],
     /**
      * Home Routes
      */

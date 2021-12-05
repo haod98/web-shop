@@ -2,6 +2,11 @@
 @use "../base";
 
 .cart-content-container {
+    .cart-summary {
+        background: #fff;
+        margin: 10px 0;
+        padding: 15px;
+    }
     .product-in-cart {
         @include mixin.flex($gap: 15px);
         background: #fff;
@@ -28,19 +33,6 @@
                 padding: 10px 10px;
             }
         }
-        .cart-detail {
-            &__label {
-                font-size: 0.8rem;
-                color: rgb(58, 58, 58);
-                margin: 0;
-                margin-bottom: 5px;
-            }
-
-            &__info {
-                margin-top: 0;
-                margin-bottom: 10px;
-            }
-        }
 
         .remove-all {
             position: absolute;
@@ -51,6 +43,19 @@
                 height: 16px;
                 fill: black;
             }
+        }
+    }
+    .cart-detail {
+        &__label {
+            font-size: 0.8rem;
+            color: rgb(58, 58, 58);
+            margin: 0;
+            margin-bottom: 5px;
+        }
+
+        &__info {
+            margin-top: 0;
+            margin-bottom: 10px;
         }
     }
 }

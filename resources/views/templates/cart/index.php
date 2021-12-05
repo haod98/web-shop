@@ -33,7 +33,7 @@
                     <p class="cart-total__price"><?php echo \App\Services\CartService::getTotalPrice($products) ?> €</p>
                 </div>
                 <div class="checkout">
-                    <a href="" class="btn btn--add link-reset">Checkout</a>
+                    <a href="<?php echo BASE_URL . "/checkout/summary" ?>" class="btn btn--add link-reset">Checkout</a>
                 </div>
             </div>
         </div>
