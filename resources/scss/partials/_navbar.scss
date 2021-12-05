@@ -75,6 +75,7 @@
 //Tablet Viewport
 @media screen and (min-width: base.$medium-width) {
     .navbar-container {
+        margin: 20px 30px;
         &__list {
             @include mixin.flex($align: center, $gap: 100px);
 

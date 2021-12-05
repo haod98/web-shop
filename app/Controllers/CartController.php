@@ -6,6 +6,8 @@ use App\Services\CartService;
 use Core\View;
 use App\Models\Product;
 use Core\Helpers\Redirector;
+use App\Models\User;
+use Core\Middlewares\AuthMiddleware;
 
 class CartController
 {
