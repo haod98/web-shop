@@ -1,11 +1,12 @@
 <nav class="navbar-container">
     <ul class="navbar-container__list">
         <li class="mobile-menu-container">
-            <button class="btn">
+            <button class="btn j-burger">
                 <svg xmlns="http://www.w3.org/2000/svg" class="navbar-container__icon  bi bi-heart" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                 </svg>
             </button>
+            <a href="<?php echo BASE_URL ?>">Home</a>
         </li>
         <li class="navbar-container__list--hidden">
             <a class="navbar-container__list--anchor-reset" href="<?php echo BASE_URL; ?>">Home</a>
@@ -42,4 +43,20 @@
             </a>
         </li>
     </ul>
+    <div class="overlay j-overlay">
+        <ul class="burger-nav">
+            <li>
+                <a href="<?php echo BASE_URL . "/women" ?>">Women</a>
+            </li>
+            <li>
+                <a href="<?php echo BASE_URL . "/men" ?>">Men</a>
+            </li>
+            <li>
+                <a href="<?php echo BASE_URL . "/login" ?>">Profile</a>
+            </li>
+            <li>
+                <a href="<?php echo BASE_URL . "/cart" ?>">Cart</a>
+            </li>
+        </ul>
+    </div>
 </nav>

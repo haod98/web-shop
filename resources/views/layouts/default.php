@@ -38,6 +38,7 @@
         <p>2021 &copy;</p>
     </footer>
     <script src="<?php echo BASE_URL ?>/js/app.min.js"></script>
+    <script src="<?php echo BASE_URL ?>/js/burgerMenu.js"></script>
 </body>
 
 </html>
