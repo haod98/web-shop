@@ -4,7 +4,7 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Facere, et quas, nobis nulla unde, tempore dignissimos veritatis repellat qui laborum impedit. Provident at distinctio tenetur, quos natus doloribus
             quas. Vero!</p>
-        <a href="" class="link-reset btn--cta-btn">Shop our newest collection</a>
+        <a href="<?php echo BASE_URL . "/women" ?>" class="link-reset btn btn--cta-btn">Shop our newest collection</a>
     </div>
     <div class="card-img-container">
         <img src="<?php echo BASE_URL ?>/assets/hero.png" alt="" class="card-img-container__img">

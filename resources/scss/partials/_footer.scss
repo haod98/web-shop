@@ -1,0 +1,15 @@
+@use "../mixin";
+@use "../base";
+.footer {
+    @include mixin.flex($justify: space-between);
+    padding: 10px 20px;
+    background: darken(base.$bg-primary, 20%);
+    p,
+    a {
+        margin: 0;
+        color: black;
+        font-size: 0.7rem;
+    }
+    a {
+    }
+}

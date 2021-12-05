@@ -11,7 +11,7 @@
         letter-spacing: 2px;
         max-width: 300px;
         &--active {
-            border-bottom: solid 2px #000;
+            border-bottom: solid 2px #000 !important;
             font-weight: bold;
         }
     }
@@ -54,7 +54,10 @@
             font-weight: bold;
             letter-spacing: 2px;
             padding: 10px 0;
+            margin-right: 0;
+            width: 100%;
         }
+
         &__file {
             margin-bottom: 15px;
         }
