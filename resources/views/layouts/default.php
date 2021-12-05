@@ -32,11 +32,11 @@
     </div>
 
 
-    <footer class="footer">
+    <!-- <footer class="footer">
         <a href="">Privacy</a>
         <a href="">Terms and condition</a>
         <p>2021 &copy;</p>
-    </footer>
+    </footer> -->
     <script src="<?php echo BASE_URL ?>/js/app.min.js"></script>
 </body>
 

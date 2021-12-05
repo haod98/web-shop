@@ -23,7 +23,7 @@
                 <a href="<?php echo BASE_URL . "/login" ?>" class="btn btn--dark btn-reminder link-reset align-center">Please login to add to basket</a>
             <?php endif; ?>
             <?php if (\Core\Middlewares\AuthMiddleware::isLoggedIn()) : ?>
-                <a href="<?php echo BASE_URL . "/products/$product->id/add-to-cart" ?>">Add to cart</a>
+                <a href="<?php echo BASE_URL . "/products/$product->id/add-to-cart" ?>" class="btn btn--dark link-reset btn-reminder align-center">Add to cart</a>
             <?php endif; ?>
         </div>
     </div>
