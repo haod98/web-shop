@@ -20,7 +20,7 @@
     </div>
     <div class="card-img-container  card-img-container--right">
         <!-- TODO Remove dummy image and add image -->
-        <img src="<?php echo BASE_URL ?>/assets/hero.png" alt="" class="card-img-container__img">
+        <img src="<?php echo BASE_URL ?>/assets/hero2.jpg" alt="" class="card-img-container__img">
     </div>
 </div>
 
