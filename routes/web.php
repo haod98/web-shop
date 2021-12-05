@@ -12,6 +12,7 @@ use App\Controllers\HomeController;
 use App\Controllers\ProductController;
 use App\Controllers\ProfileController;
 use App\Controllers\CheckoutController;
+use App\Controllers\NewsletterController;
 use Core\Middlewares\AuthMiddleware;
 
 /**
@@ -76,6 +77,9 @@ return [
      */
     '/checkout/address' => [AddressController::class, 'checkout'],
     '/checkout/address/do' => [AddressController::class, 'addressUpdate'],
+
+
+    '/newsletter' => [NewsletterController::class, 'register'],
 
     /**
      * Home Routes
