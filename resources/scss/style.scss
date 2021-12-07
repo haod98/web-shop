@@ -49,10 +49,14 @@ h2 {
 body {
     margin: 0;
     padding: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 .view-loader-container {
     margin: 0 20px;
+    flex: 1;
 }
 
 .hide {

@@ -44,8 +44,9 @@
                     </div>
                 </div>
             </div>
-        <?php else : ?>
-            <h2 class="align-center">Your cart seems empty :(</h2>
-            <p class="align-center">Try adding some products</p>
-        <?php endif; ?>
+        </div>
+    <?php else : ?>
+        <h2 class="align-center">Your cart seems empty :(</h2>
+        <p class="align-center">Try adding some products</p>
     <?php endif; ?>
+<?php endif; ?>

@@ -1,13 +1,35 @@
 @use "../mixin";
 @use "../base";
 .footer {
-    @include mixin.flex($justify: space-between);
-    padding: 10px 20px;
+    // position: absolute;
+    // bottom: 0%;
+    // width: 100%;
+    @include mixin.flex($justify: center, $direction: column, $align: center);
+    padding: 20px 20px;
     background: darken(base.$bg-primary, 20%);
     p,
     a {
         margin: 0;
         color: black;
         font-size: 0.7rem;
+    }
+    &__icon {
+        fill: black;
+        height: 40px;
+        width: 40px;
+    }
+
+    &-icon-container {
+        @include mixin.flex($gap: 15px);
+        margin: 10px 0;
+    }
+
+    &__links {
+        @include mixin.flex($direction: column, $align: center, $gap: 5px);
+    }
+
+    .footer-msg {
+        font-size: 1rem;
+        font-weight: bold;
     }
 }
