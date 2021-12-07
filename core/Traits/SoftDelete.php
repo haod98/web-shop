@@ -91,4 +91,19 @@ trait SoftDelete
          */
         return self::handleResult($result);
     }
+
+    public static function limit(?string $orderBy = null, ?string $direction = null, int $limit = 1)
+    {
+        $database = new Database();
+        $tablename = self::getTablenameFromClassname();
+        if ($orderBy === null) {
+            $result = $database->query("SELECT * FROM $tablename WHERE deleted_at IS NULL LIMIT $limit");
+        } else {
+            $result = $database->query(
+                "SELECT * FROM $tablename WHERE deleted_at IS NULL ORDER BY $orderBy $direction LIMIT $limit"
+            );
+        }
+
+        return self::handleResult($result);
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Product;
 use App\Models\Room;
 use Core\View;
 
@@ -16,6 +17,9 @@ class HomeController
      */
     public function index()
     {
-        View::render('index', ['foo' => 'bar']);
+        $products = Product::limit("gender", "ASC", 4);
+        View::render('index', [
+            'products' => $products
+        ]);
     }
 }

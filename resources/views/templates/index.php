@@ -10,7 +10,20 @@
         <img src="<?php echo BASE_URL ?>/assets/hero.png" alt="" class="card-img-container__img">
     </div>
 </div>
-
+<div class=" new-product-container">
+    <h2 class="align-center">New arrivals</h2>
+    <div class="products-container">
+        <?php foreach ($products as $product) : ?>
+            <div class="single-product">
+                <a href="<?php echo BASE_URL . "/products/details/$product->id" ?>">
+                    <img src="<?php echo BASE_URL  . $product->getFirstImage(); ?>" alt="" class="single-product__image">
+                </a>
+                <p class="single-product__name"><?php echo $product->name ?></p>
+                <p class="single-product__price"><?php echo $product->price ?> €</p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
 <div class="card-container">
     <div class="card-container-text card-container-text--left">
         <h2 class="card-container-text__heading">Our Mission</h1>
