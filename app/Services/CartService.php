@@ -166,4 +166,9 @@ class CartService
         }
         return $total;
     }
+
+    public static function getTotalPriceOfCurrentProduct(int $price, int $count)
+    {
+        return $price * $count;
+    }
 }

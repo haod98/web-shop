@@ -60,24 +60,33 @@
     }
 }
 .cart-total-container {
-    @include mixin.flex($align: end, $direction: column-reverse);
+    @include mixin.flex($align: end, $direction: column);
     background: #fff;
     margin: 20px 0;
     padding: 15px;
-    .cart-total {
-        @include mixin.flex($gap: 15px);
-        &__label {
-            margin: 0;
-        }
-        &__price {
-            margin: 0;
-        }
+    .checkout-products {
+        margin: 0 0 5px;
     }
-    .checkout {
-        display: flex;
-        margin-top: 10px;
-        .btn--add {
-            margin: 0;
+    .checkout-container {
+        border-top: 2px solid #000;
+        padding-top: 10px;
+        .cart-total {
+            font-weight: bold;
+            @include mixin.flex($gap: 15px);
+            &__label {
+                margin: 0;
+            }
+            &__price {
+                margin: 0;
+            }
+        }
+        .checkout {
+            display: flex;
+            justify-content: end;
+            margin-top: 10px;
+            .btn--add {
+                margin: 0;
+            }
         }
     }
 }

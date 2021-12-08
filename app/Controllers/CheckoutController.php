@@ -21,12 +21,12 @@ class CheckoutController
 
     public function summary()
     {
-        $cartContents = CartService::get();
+        $products = CartService::get();
         $address = Address::all();
         $user = User::getLoggedIn();
 
         View::render('checkout/summary', [
-            'cartContents' => $cartContents,
+            'products' => $products,
             'user' => $user,
             'address' => $address
         ]);
