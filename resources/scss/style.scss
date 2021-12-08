@@ -138,3 +138,22 @@ body {
     height: 17px;
     fill: #fff;
 }
+
+.mt-2 {
+    margin-top: 10px;
+}
+
+.logo {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-family: base.$heading_ff;
+    color: base.$primary;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+@media (min-width: (base.$medium-width)) {
+    .logo {
+        font-size: 2rem;
+    }
+}
