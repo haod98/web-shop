@@ -26,14 +26,6 @@ class AddressController
 
     public function addressUpdate()
     {
-
-        $errors = $this->validateForm();
-
-        if (!empty($errors)) {
-            Session::set('errors', $errors);
-            Redirector::redirect('/login');
-        }
-
         $address = new Address();
         if (empty(User::getLoggedIn()->id)) {
             $address->fill([
@@ -54,11 +46,45 @@ class AddressController
         }
 
         if ($address->save()) {
-            Session::set('success', ['Your address is saved']);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function checkoutAddress()
+    {
+        $errors = $this->validateForm();
+
+        if (!empty($errors)) {
+            Session::set('errors', $errors);
+            Redirector::redirect('/checkout/address');
+        }
+
+        if ($this->addressUpdate()) {
             Redirector::redirect('/checkout/summary');
         } else {
             Session::set('errors', ['There was an unexpected error']);
             Redirector::redirect('/checkout/address');
+        }
+    }
+
+    public function updateProfileAddress()
+    {
+
+        $errors = $this->validateForm();
+
+        if (!empty($errors)) {
+            Session::set('errors', $errors);
+            Redirector::redirect('/home');
+        }
+
+        if ($this->addressUpdate()) {
+            Session::set('success', ['Your address is saved']);
+            Redirector::redirect('/home');
+        } else {
+            Session::set('errors', ['There was an unexpected error']);
+            Redirector::redirect('/home');
         }
     }
 

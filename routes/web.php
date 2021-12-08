@@ -76,7 +76,8 @@ return [
      * Address Routes
      */
     '/checkout/address' => [AddressController::class, 'checkout'],
-    '/checkout/address/do' => [AddressController::class, 'addressUpdate'],
+    '/checkout/address/do' => [AddressController::class, 'checkoutAddress'],
+    '/home/address/update' => [AddressController::class, 'updateProfileAddress'],
 
 
     '/newsletter' => [NewsletterController::class, 'register'],

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Address;
 use Core\Middlewares\AuthMiddleware;
 use App\Models\User;
 use Core\View;
@@ -21,9 +22,11 @@ class ProfileController
     public function home()
     {
         $user = User::getLoggedIn();
+        $address = Address::all();
 
         View::render('profile/index', [
-            'user' => $user
+            'user' => $user,
+            'address' => $address
         ]);
     }
 
