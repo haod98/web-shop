@@ -23,6 +23,9 @@
             </div>
         <?php endforeach; ?>
     </div>
+    <div class=" align-center newest-product-cta">
+        <a href="<?php echo BASE_URL . "/women" ?>" class=" link-reset btn btn--dark mr-0">More products</a>
+    </div>
 </div>
 <div class="card-container">
     <div class="card-container-text card-container-text--left">
@@ -48,6 +51,9 @@
                 <p class="single-product__price"><?php echo $product->price ?> €</p>
             </div>
         <?php endforeach; ?>
+    </div>
+    <div class=" align-center newest-product-cta">
+        <a href="<?php echo BASE_URL . "/men" ?>" class=" link-reset btn btn--dark mr-0">More products</a>
     </div>
 </div>
 
