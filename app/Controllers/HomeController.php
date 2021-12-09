@@ -17,9 +17,11 @@ class HomeController
      */
     public function index()
     {
-        $products = Product::limit("gender", "ASC", 4);
+        $productsWomen = Product::getNewestProducts('women');
+        $productsMen = Product::getNewestProducts('men');
         View::render('index', [
-            'products' => $products
+            'productsWomen' => $productsWomen,
+            'productsMen' => $productsMen
         ]);
     }
 }

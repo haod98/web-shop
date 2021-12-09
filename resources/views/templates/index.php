@@ -13,7 +13,7 @@
 <div class=" new-product-container">
     <h2 class="align-center">New arrivals</h2>
     <div class="products-container">
-        <?php foreach ($products as $product) : ?>
+        <?php foreach ($productsWomen as $product) : ?>
             <div class="single-product">
                 <a href="<?php echo BASE_URL . "/products/details/$product->id" ?>">
                     <img src="<?php echo BASE_URL  . $product->getFirstImage(); ?>" alt="" class="single-product__image">
@@ -34,6 +34,20 @@
     <div class="card-img-container  card-img-container--right">
         <!-- TODO Remove dummy image and add image -->
         <img src="<?php echo BASE_URL ?>/assets/hero2.jpg" alt="" class="card-img-container__img">
+    </div>
+</div>
+<div class=" new-product-container mb-0">
+    <h2 class="align-center">New arrivals</h2>
+    <div class="products-container">
+        <?php foreach ($productsMen as $product) : ?>
+            <div class="single-product">
+                <a href="<?php echo BASE_URL . "/products/details/$product->id" ?>">
+                    <img src="<?php echo BASE_URL  . $product->getFirstImage(); ?>" alt="" class="single-product__image">
+                </a>
+                <p class="single-product__name"><?php echo $product->name ?></p>
+                <p class="single-product__price"><?php echo $product->price ?> €</p>
+            </div>
+        <?php endforeach; ?>
     </div>
 </div>
 

@@ -123,4 +123,13 @@ class Product extends AbstractModel
 
         return $this->getImages();
     }
+
+    public static function getNewestProducts($gender, $limit = 4)
+    {
+        $database = new Database();
+        $tablename = self::getTablenameFromClassname();
+
+        $result = $database->query("SELECT * FROM $tablename WHERE gender = '$gender' AND deleted_at IS NULL ORDER BY id DESC LIMIT $limit");
+        return self::handleResult($result);
+    }
 }
