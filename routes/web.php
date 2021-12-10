@@ -70,6 +70,7 @@ return [
      */
     '/checkout/summary' => [CheckoutController::class, 'summary'],
     '/checkout/finish' => [CheckoutController::class, 'finish'],
+    '/checkout/success' => [CheckoutController::class, 'success'],
 
 
     /**

@@ -75,4 +75,21 @@ class Address extends AbstractModel
         $this->handleInsertResult($database);
         return $result;
     }
+
+    public static function findByUserId($userId)
+    {
+
+        $database = new Database();
+        $tablename = self::getTablenameFromClassname();
+
+
+        $result = $database->query("SELECT * FROM $tablename WHERE `user_id` = ?", [
+            'i:user_id' => $userId
+        ]);
+
+        /**
+         * Datenbankergebnis verarbeiten und zurückgeben.
+         */
+        return self::handleUniqueResult($result);
+    }
 }
