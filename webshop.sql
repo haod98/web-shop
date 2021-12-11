@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 05, 2021 at 09:49 PM
+-- Generation Time: Dec 11, 2021 at 10:32 AM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,7 @@ CREATE TABLE `address` (
 --
 
 INSERT INTO `address` (`id`, `user_id`, `address`, `city`, `postal_code`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'dasdadsadasda', 'haha', '1200000', '2021-12-05 15:55:33', '2021-12-05 17:02:21', NULL);
+(1, 1, 'teststrasse', 'Vienna', '1200000', '2021-12-05 15:55:33', '2021-12-09 11:18:04', NULL);
 
 -- --------------------------------------------------------
 
@@ -76,10 +76,19 @@ CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `address_id` int(11) NOT NULL,
+  `products` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`products`)),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `address_id`, `products`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(6, 1, 1, '[{\"id\":21,\"name\":\"Alana Lane\",\"description\":\"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\",\"price\":100,\"gender\":\"men\",\"images\":\"[\\\"\\\\\\/uploads\\\\\\/1638736926_201275955-2.jpeg\\\",\\\"\\\\\\/uploads\\\\\\/1638736926_ezgif.com-gif-maker.jpg\\\",\\\"\\\\\\/uploads\\\\\\/1638736926_ezgif.com-gif-maker(1).jpg\\\",\\\"\\\\\\/uploads\\\\\\/1638736926_ezgif.com-gif-maker(2).jpg\\\"]\",\"created_at\":\"2021-12-05 21:42:06\",\"updated_at\":\"0000-00-00 00:00:00\",\"deleted_at\":null,\"count\":2},{\"id\":20,\"name\":\"Quail Clark\",\"description\":\"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\",\"price\":638,\"gender\":\"men\",\"images\":\"[\\\"\\\\\\/uploads\\\\\\/1638736904_ezgif.com-gif-maker.jpg\\\",\\\"\\\\\\/uploads\\\\\\/1638736904_ezgif.com-gif-maker(1).jpg\\\",\\\"\\\\\\/uploads\\\\\\/1638736904_ezgif.com-gif-maker(2).jpg\\\"]\",\"created_at\":\"2021-12-05 21:41:44\",\"updated_at\":\"0000-00-00 00:00:00\",\"deleted_at\":null,\"count\":1}]', '2021-12-10 11:29:11', '0000-00-00 00:00:00', NULL),
+(8, 1, 1, '[{\"id\":23,\"name\":\"Nell Moses\",\"description\":\"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\",\"price\":140,\"gender\":\"men\",\"images\":\"[\\\"\\\\\\/uploads\\\\\\/1638736977_20512344-2.jpg\\\",\\\"\\\\\\/uploads\\\\\\/1638736977_20512344-3.jpg\\\",\\\"\\\\\\/uploads\\\\\\/1638736977_20512344-4.jpg\\\",\\\"\\\\\\/uploads\\\\\\/1638736977_test1.jpeg\\\"]\",\"created_at\":\"2021-12-05 21:42:57\",\"updated_at\":\"0000-00-00 00:00:00\",\"deleted_at\":null,\"count\":1}]', '2021-12-10 12:11:47', '0000-00-00 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -219,7 +228,7 @@ ALTER TABLE `newsletters`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `products`
