@@ -70,7 +70,7 @@ class Order extends AbstractModel
         $database = new Database();
         $tablename = self::getTablenameFromClassname();
 
-        $result = $database->query("SELECT * FROM $tablename WHERE user_id = $user_id");
+        $result = $database->query("SELECT * FROM $tablename WHERE user_id = $user_id ORDER BY created_at DESC");
         return self::handleResult($result);
     }
 }
