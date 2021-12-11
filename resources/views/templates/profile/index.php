@@ -1,5 +1,5 @@
 <div class="welcome-message">
-    <h2>Welcome back, <?php echo $user->first_name ?></h2>
+    <h2>Hello <?php echo $user->first_name ?></h2>
     <a href="<?php echo BASE_URL . "/home/logout" ?>" class="btn btn--dark link-reset">Log out</a>
 </div>
 

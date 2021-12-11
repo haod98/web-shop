@@ -93,7 +93,7 @@ class AddressController
 
         $validator = new Validator();
         if (!empty($_POST)) {
-            $validator->letters($_POST['address'], label: 'Address', required: true);
+            // $validator->alphanumeric($_POST['address'], label: 'Address', required: true);
             $validator->alphanumeric($_POST['postal'], label: 'Postal Code', required: true);
             $validator->letters($_POST['city'], label: 'City', required: true,);
         }
