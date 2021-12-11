@@ -30,6 +30,10 @@
     .mobile-menu-container {
         display: flex;
         align-items: center;
+        .btn {
+            padding-left: 0;
+            margin-right: 0;
+        }
     }
 }
 
@@ -73,7 +77,7 @@
     .navbar-container {
         margin: 20px 30px;
         &__list {
-            @include mixin.flex($align: center, $gap: 100px);
+            @include mixin.flex($align: center, $gap: 20px);
 
             &--hidden {
                 display: block;
@@ -89,6 +93,14 @@
 
         .mobile-menu-container {
             display: none;
+        }
+    }
+}
+
+@media screen and (min-width: base.$large-width) {
+    .navbar-container {
+        &__list {
+            gap: 80px;
         }
     }
 }
