@@ -3,3 +3,67 @@
 .welcome-message {
     @include mixin.flex($justify: space-between, $align: center);
 }
+
+.order-overview-container {
+    background: #fff;
+    padding: 20px 20px;
+    margin-bottom: 15px;
+    .order-img {
+        max-width: 200px;
+    }
+
+    .order-detail {
+        @include mixin.flex($justify: space-between);
+        margin-bottom: 15px;
+        .order-detail__header {
+            margin: 0;
+        }
+        .order-detail__text {
+            margin: 0;
+        }
+    }
+
+    .single-order-container {
+        @include mixin.flex($align: center, $direction: column);
+        .single-order-header {
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .single-order-text {
+            margin-top: 0;
+        }
+    }
+
+    .order-total {
+        text-align: right;
+        .total {
+            font-size: 1.2rem;
+        }
+    }
+}
+
+@media (min-width: base.$medium-width) {
+    .orders {
+        @include mixin.flex($justify: center, $align: center, $direction: column);
+    }
+    .order-overview-container {
+        max-width: 800px;
+        min-width: 700px;
+        .order-img {
+            max-width: 120px;
+        }
+
+        .order-detail {
+            // max-width: 200px;
+            // min-width: 200px;
+        }
+        .single-order-container {
+            @include mixin.flex($gap: 15px);
+            margin-bottom: 15px;
+            .single-order-description {
+                @include mixin.flex($gap: 15px, $grow: 1, $justify: space-between, $align: start);
+            }
+        }
+    }
+}

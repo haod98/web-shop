@@ -24,16 +24,15 @@ class ProfileController
     {
         $user = User::getLoggedIn();
         $address = Address::findByUserId($user->id);
-        $orders = $user->orders();
-        OrderController::getSingleOrders($orders);
-        // $productsOrdered = json_decode($orders[0]->products);
+        $ordersAll = $user->orders();
+        $singleOrders = OrderController::getSingleOrders($ordersAll);
 
 
         View::render('profile/index', [
             'user' => $user,
             'address' => $address,
-            'orders' => $orders,
-            // 'productsOrdered' => $productsOrdered
+            'ordersAll' => $ordersAll,
+            'singleOrders' => $singleOrders
 
         ]);
     }
