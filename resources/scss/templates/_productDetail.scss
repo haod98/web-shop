@@ -24,6 +24,7 @@
     .product-and-add {
         display: flex;
         gap: 25px;
+        margin-bottom: 20px;
         .product-detail-container {
             @include mixin.flex($direction: row, $align: center, $gap: 15px, $order: 1, $justify: end);
             flex-basis: 50%;

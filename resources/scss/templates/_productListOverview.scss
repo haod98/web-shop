@@ -33,7 +33,7 @@
 }
 @media (min-width: base.$medium-width) {
     .product-list-container {
-        margin: 0 auto;
+        margin: 0 auto 20px;
         @include mixin.flex();
         flex-wrap: wrap;
         .product-container {
