@@ -72,4 +72,9 @@ class User extends AbstractUser
         $this->handleInsertResult($database);
         return $result;
     }
+
+    public function orders()
+    {
+        return Order::findOrderByUserId($this->id);
+    }
 }

@@ -10,6 +10,7 @@ use Core\Validator;
 use Core\Session;
 use Core\Helpers\Redirector;
 
+
 class ProfileController
 {
 
@@ -22,11 +23,18 @@ class ProfileController
     public function home()
     {
         $user = User::getLoggedIn();
-        $address = Address::all();
+        $address = Address::findByUserId($user->id);
+        $orders = $user->orders();
+        OrderController::getSingleOrders($orders);
+        // $productsOrdered = json_decode($orders[0]->products);
+
 
         View::render('profile/index', [
             'user' => $user,
-            'address' => $address
+            'address' => $address,
+            'orders' => $orders,
+            // 'productsOrdered' => $productsOrdered
+
         ]);
     }
 

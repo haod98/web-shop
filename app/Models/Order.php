@@ -14,9 +14,9 @@ class Order extends AbstractModel
         public ?int $user_id = null,
         public ?int $address_id = null,
         public string|array $products = '',
-        public ?int $created_at = null,
-        public ?int $updated_at = null,
-        public ?int $deleted_at = null
+        public ?string $created_at = '',
+        public ?string $updated_at = '',
+        public ?string $deleted_at = ''
 
     ) {
     }
@@ -63,5 +63,14 @@ class Order extends AbstractModel
             return json_decode($this->products);
         }
         return $this->products;
+    }
+
+    public static function findOrderByUserId($user_id)
+    {
+        $database = new Database();
+        $tablename = self::getTablenameFromClassname();
+
+        $result = $database->query("SELECT * FROM $tablename WHERE user_id = $user_id");
+        return self::handleResult($result);
     }
 }
