@@ -22,6 +22,11 @@
                 <a class="navbar-container__list--anchor-reset" href="<?php echo BASE_URL; ?>/products">Edit Products</a>
             </li>
         <?php endif; ?>
+        <?php if (\Core\Middlewares\AuthMiddleware::isAdmin()) : ?>
+            <li class="navbar-container__list--hidden">
+                <a class="navbar-container__list--anchor-reset" href="<?php echo BASE_URL; ?>/users/admin">Edit Users</a>
+            </li>
+        <?php endif; ?>
     </ul>
     <ul class="list-reset navbar-container__icon-list">
         <?php if (\Core\Middlewares\AuthMiddleware::isAdmin()) : ?>
@@ -66,6 +71,11 @@
             <?php if (\Core\Middlewares\AuthMiddleware::isAdmin()) : ?>
                 <li>
                     <a href="<?php echo BASE_URL; ?>/products">Edit Products</a>
+                </li>
+            <?php endif; ?>
+            <?php if (\Core\Middlewares\AuthMiddleware::isAdmin()) : ?>
+                <li>
+                    <a href="<?php echo BASE_URL; ?>/users/admin">Edit Users</a>
                 </li>
             <?php endif; ?>
         </ul>

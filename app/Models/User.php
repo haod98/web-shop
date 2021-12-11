@@ -52,12 +52,13 @@ class User extends AbstractUser
         $tablename = self::getTablenameFromClassname();
 
         if (!empty($this->id)) {
-            $result = $database->query("UPDATE $tablename SET email = ?, first_name = ?, last_name = ?,  password = ?, is_admin = ?", [
+            $result = $database->query("UPDATE $tablename SET email = ?, first_name = ?, last_name = ?,  password = ?, is_admin = ? WHERE id = ?",  [
                 's:email' => $this->email,
                 's:first_name' => $this->first_name,
                 's:last_name' => $this->last_name,
                 's:password' => $this->password,
-                'i:is_admin' => $this->is_admin
+                'i:is_admin' => $this->is_admin,
+                'i:id' => $this->id
             ]);
             return $result;
         }

@@ -1,0 +1,22 @@
+@use "../base";
+
+.user-table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+
+    &__row:nth-child(odd) {
+        background: darken(base.$bg-primary, 10%);
+    }
+
+    &__head,
+    &__data {
+        border: black 1px solid;
+    }
+    &__head {
+        padding: 10px 0;
+    }
+    &__data {
+        padding: 20px 0;
+    }
+}

@@ -14,6 +14,7 @@ use App\Controllers\ProfileController;
 use App\Controllers\CheckoutController;
 use App\Controllers\NewsletterController;
 use Core\Middlewares\AuthMiddleware;
+use App\Controllers\UserController;
 
 /**
  * Die Dateien im /routes Ordner beinhalten ein Mapping von einer URL auf eine eindeutige Controller & Action
@@ -82,6 +83,12 @@ return [
 
 
     '/newsletter' => [NewsletterController::class, 'register'],
+
+    '/users/admin' => [UserController::class, 'index'],
+    '/users/admin/{id}/edit' => [UserController::class, 'edit'],
+    '/users/admin/{id}/update' => [UserController::class, 'update'],
+    '/users/admin/{id}/delete' => [UserController::class, 'delete'],
+    '/users/admin/{id}/delete/confirm' => [UserController::class, 'deleteConfirm'],
 
     /**
      * Home Routes

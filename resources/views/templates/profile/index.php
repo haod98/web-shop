@@ -11,7 +11,7 @@
                 <div class="order-detail">
                     <div>
                         <p class="order-detail__header">Order date:</p>
-                        <p class="order-detail__text"><?php echo \App\Controllers\OrderController::getDate($orders->created_at); ?></p>
+                        <p class="order-detail__text"><?php echo App\Controllers\OrderController::getDate($orders->created_at); ?></p>
                     </div>
                     <div>
                         <p class="order-detail__header">Order ID: </p>
