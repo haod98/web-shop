@@ -3,10 +3,27 @@
 namespace App\Controllers;
 
 use App\Models\Order;
+use Core\View;
+use App\Models\User;
+use Core\Middlewares\AuthMiddleware;
 use Core\Models\DateTime;
 
 class OrderController
 {
+
+    public function index()
+    {
+        AuthMiddleware::isLoggedInOrFail();
+        $user = User::getLoggedIn();
+        $ordersAll = $user->orders();
+        $singleOrders = OrderController::getSingleOrders($ordersAll);
+
+        View::render('order/index', [
+            'user' => $user,
+            'ordersAll' => $ordersAll,
+            'singleOrders' => $singleOrders
+        ]);
+    }
 
     public static function getSingleOrders($orders)
     {

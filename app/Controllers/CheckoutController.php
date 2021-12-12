@@ -56,6 +56,7 @@ class CheckoutController
 
     public function success()
     {
-        View::render('checkout/success');
+        $order = new OrderController();
+        $order->index();
     }
 }

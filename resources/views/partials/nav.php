@@ -17,6 +17,11 @@
         <li class="navbar-container__list--hidden">
             <a class="navbar-container__list--anchor-reset" href="<?php echo BASE_URL; ?>/men">Men</a>
         </li>
+        <?php if (\Core\Middlewares\AuthMiddleware::isLoggedIn()) : ?>
+            <li>
+                <a class="navbar-container__list--anchor-reset" href="<?php echo BASE_URL; ?>/orders">Your orders</a>
+            </li>
+        <?php endif; ?>
         <?php if (\Core\Middlewares\AuthMiddleware::isAdmin()) : ?>
             <li class="navbar-container__list--hidden">
                 <a class="navbar-container__list--anchor-reset" href="<?php echo BASE_URL; ?>/products">Edit Products</a>
@@ -68,6 +73,11 @@
             <li>
                 <a href="<?php echo BASE_URL . "/cart" ?>">Cart</a>
             </li>
+            <?php if (\Core\Middlewares\AuthMiddleware::isLoggedIn()) : ?>
+                <li>
+                    <a href="<?php echo BASE_URL; ?>/orders">Your orders</a>
+                </li>
+            <?php endif; ?>
             <?php if (\Core\Middlewares\AuthMiddleware::isAdmin()) : ?>
                 <li>
                     <a href="<?php echo BASE_URL; ?>/products">Edit Products</a>

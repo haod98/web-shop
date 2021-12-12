@@ -13,6 +13,7 @@ use App\Controllers\ProductController;
 use App\Controllers\ProfileController;
 use App\Controllers\CheckoutController;
 use App\Controllers\NewsletterController;
+use App\Controllers\OrderController;
 use Core\Middlewares\AuthMiddleware;
 use App\Controllers\UserController;
 
@@ -89,6 +90,9 @@ return [
     '/users/admin/{id}/update' => [UserController::class, 'update'],
     '/users/admin/{id}/delete' => [UserController::class, 'delete'],
     '/users/admin/{id}/delete/confirm' => [UserController::class, 'deleteConfirm'],
+
+
+    '/orders' => [OrderController::class, 'index'],
 
     /**
      * Home Routes
