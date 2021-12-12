@@ -4,6 +4,7 @@
     width: 100%;
     text-align: center;
     border-collapse: collapse;
+    margin-bottom: 15px;
 
     &__row:nth-child(odd) {
         background: darken(base.$bg-primary, 10%);
@@ -18,5 +19,18 @@
     }
     &__data {
         padding: 20px 0;
+    }
+
+    &__image {
+        max-width: 120px;
+    }
+
+    &__description {
+        width: 35%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .btn--delete {
+        margin-right: 0;
     }
 }

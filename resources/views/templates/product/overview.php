@@ -24,25 +24,33 @@
         </button>
     </form>
 </div>
-<div class="product-list-container">
+<table class="user-table">
+    <thead>
+        <th class="user-table__head">#</th>
+        <th class="user-table__head">Product name</th>
+        <th class="user-table__head">Image</th>
+        <th class="user-table__head">Product Price</th>
+        <th class="user-table__head">Product description</th>
+        <th class="user-table__head">Gender</th>
+        <th class="user-table__head">Actions</th>
+    </thead>
+
     <?php foreach ($products as $product) : ?>
-        <div class="product-container">
-            <p class="product-container-text"><span class="bold ">Product id: </span><br><?php echo $product->id ?></p>
-            <p class="product-container-text"><span class="bold ">Product name: </span><br><?php echo $product->name ?></p>
-            <p class="product-container-text"><span class="bold ">Product price: </span><br><?php echo $product->price ?> €</p>
-            <p class="product-container-text"><span class="bold ">Product description: </span><br><?php echo $product->description ?></p>
-            <p class="product-container-text"><span class="bold">Product gender: </span><br><?php echo $product->gender ?></p>
-            <div class="product-list-image-container">
-                <img src="<?php echo BASE_URL  . $product->getFirstImage(); ?>" alt="" class="product-list-image">
-            </div>
-            <div>
+        <tr class="user-table__row">
+            <td class="user-table__data"><?php echo $product->id; ?></td>
+            <td class="user-table__data"><?php echo $product->name; ?></td>
+            <td class="user-table__data"><img class=" user-table__image" src="<?php echo BASE_URL . $product->getFirstImage(); ?>" alt=""></td>
+            <td class="user-table__data"><?php echo $product->price; ?> €</td>
+            <td class="user-table__data user-table__description"><?php echo $product->description; ?></td>
+            <td class="user-table__data"><?php echo $product->gender; ?></td>
+            <td class="user-table__data">
                 <a href="<?php echo BASE_URL . "/products/$product->id/edit" ?>" class="link-reset btn btn--edit">
                     Edit
                 </a>
                 <a href="<?php echo BASE_URL . "/products/$product->id/delete" ?>" class="link-reset btn btn--delete">
                     Delete
                 </a>
-            </div>
-        </div>
+            </td>
+        </tr>
     <?php endforeach; ?>
-</div>
+</table>
