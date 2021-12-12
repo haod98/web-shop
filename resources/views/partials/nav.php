@@ -18,7 +18,7 @@
             <a class="navbar-container__list--anchor-reset" href="<?php echo BASE_URL; ?>/men">Men</a>
         </li>
         <?php if (\Core\Middlewares\AuthMiddleware::isLoggedIn()) : ?>
-            <li>
+            <li class="navbar-container__list--hidden">
                 <a class="navbar-container__list--anchor-reset" href="<?php echo BASE_URL; ?>/orders">Your orders</a>
             </li>
         <?php endif; ?>
